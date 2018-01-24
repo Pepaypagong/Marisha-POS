@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_income_statement" targetNamespace="http://tempuri.org/ds_income_statement.xsd" xmlns:mstns="http://tempuri.org/ds_income_statement.xsd" xmlns="http://tempuri.org/ds_income_statement.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="pos_marishaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="pos_marishaConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Marisha_POS.My.MySettings.GlobalReference.Default.pos_marishaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sales_trans_tableTableAdapter" GeneratorDataComponentClassName="sales_trans_tableTableAdapter" Name="sales_trans_table" UserDataComponentName="sales_trans_tableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="pos_marishaConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SUM(sub_total) AS Sales, 
+	   SUM(total_discount) AS SalesDiscount,
+	   SUM(ret_total_amount) AS SalesRetrn,
+	   SUM(bo_total_amount) AS BO
+FROM sales_trans_table</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Sales" DataSetColumn="Sales" />
+              <Mapping SourceColumn="SalesDiscount" DataSetColumn="SalesDiscount" />
+              <Mapping SourceColumn="SalesRetrn" DataSetColumn="SalesRetrn" />
+              <Mapping SourceColumn="BO" DataSetColumn="BO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="purchase_trans_tableTableAdapter" GeneratorDataComponentClassName="purchase_trans_tableTableAdapter" Name="purchase_trans_table" UserDataComponentName="purchase_trans_tableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="pos_marishaConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SUM(sub_total) AS Purchases, 
+	   SUM(total_return_price) AS PurchaseReturn,
+	   SUM(total_discount) AS PurchaseDiscount
+FROM purchase_trans_table </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Purchases" DataSetColumn="Purchases" />
+              <Mapping SourceColumn="PurchaseReturn" DataSetColumn="PurchaseReturn" />
+              <Mapping SourceColumn="PurchaseDiscount" DataSetColumn="PurchaseDiscount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="begin_end_inv_tableTableAdapter" GeneratorDataComponentClassName="begin_end_inv_tableTableAdapter" Name="begin_end_inv_table" UserDataComponentName="begin_end_inv_tableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="pos_marishaConnectionString (MySettings)" DbObjectName="pos_marisha.dbo.begin_end_inv_table" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [begin_end_inv_table] WHERE (([item_no] = @Original_item_no) AND ([item_name] = @Original_item_name) AND ([id] = @Original_id) AND ((@IsNull_price_beg = 1 AND [price_beg] IS NULL) OR ([price_beg] = @Original_price_beg)) AND ([trans_date] = @Original_trans_date))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_item_no" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="item_no" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_item_name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="item_name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_price_beg" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="price_beg" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_price_beg" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="price_beg" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_trans_date" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="trans_date" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT a.item_no, a.item_name, a.id, a.price_beg, a.trans_date
+FROM begin_end_inv_table a
+INNER JOIN (
+    SELECT item_no, MAX(id) id
+    FROM begin_end_inv_table
+    GROUP BY item_no 
+) b ON a.item_no = b.item_no AND a.id = b.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [begin_end_inv_table] SET [item_no] = @item_no, [item_name] = @item_name, [price_beg] = @price_beg, [trans_date] = @trans_date WHERE (([item_no] = @Original_item_no) AND ([item_name] = @Original_item_name) AND ([id] = @Original_id) AND ((@IsNull_price_beg = 1 AND [price_beg] IS NULL) OR ([price_beg] = @Original_price_beg)) AND ([trans_date] = @Original_trans_date));
+SELECT a.item_no, a.item_name, a.ID, a.price_beg, a.trans_date FROM begin_end_inv_table AS a INNER JOIN (SELECT item_no, MAX(ID) AS id FROM begin_end_inv_table GROUP BY item_no) AS b ON a.item_no = b.item_no AND a.ID = b.id WHERE (a.ID = @ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@item_no" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="item_no" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@item_name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="item_name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@price_beg" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="price_beg" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@trans_date" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="trans_date" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_item_no" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="item_no" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_item_name" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="item_name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_price_beg" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="price_beg" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_price_beg" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="price_beg" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_trans_date" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="trans_date" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ID" ColumnName="ID" DataSourceName="pos_marisha.dbo.begin_end_inv_table" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="item_no" DataSetColumn="item_no" />
+              <Mapping SourceColumn="item_name" DataSetColumn="item_name" />
+              <Mapping SourceColumn="trans_date" DataSetColumn="trans_date" />
+              <Mapping SourceColumn="price_beg" DataSetColumn="price_beg" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_income_statement" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_income_statement" msprop:Generator_UserDSName="ds_income_statement">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="sales_trans_table" msprop:Generator_TableClassName="sales_trans_tableDataTable" msprop:Generator_TableVarName="tablesales_trans_table" msprop:Generator_TablePropName="sales_trans_table" msprop:Generator_RowDeletingName="sales_trans_tableRowDeleting" msprop:Generator_RowChangingName="sales_trans_tableRowChanging" msprop:Generator_RowEvHandlerName="sales_trans_tableRowChangeEventHandler" msprop:Generator_RowDeletedName="sales_trans_tableRowDeleted" msprop:Generator_UserTableName="sales_trans_table" msprop:Generator_RowChangedName="sales_trans_tableRowChanged" msprop:Generator_RowEvArgName="sales_trans_tableRowChangeEvent" msprop:Generator_RowClassName="sales_trans_tableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sales" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSales" msprop:Generator_ColumnPropNameInRow="Sales" msprop:Generator_ColumnPropNameInTable="SalesColumn" msprop:Generator_UserColumnName="Sales" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SalesDiscount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSalesDiscount" msprop:Generator_ColumnPropNameInRow="SalesDiscount" msprop:Generator_ColumnPropNameInTable="SalesDiscountColumn" msprop:Generator_UserColumnName="SalesDiscount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SalesRetrn" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSalesRetrn" msprop:Generator_ColumnPropNameInRow="SalesRetrn" msprop:Generator_ColumnPropNameInTable="SalesRetrnColumn" msprop:Generator_UserColumnName="SalesRetrn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BO" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBO" msprop:Generator_ColumnPropNameInRow="BO" msprop:Generator_ColumnPropNameInTable="BOColumn" msprop:Generator_UserColumnName="BO" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="purchase_trans_table" msprop:Generator_TableClassName="purchase_trans_tableDataTable" msprop:Generator_TableVarName="tablepurchase_trans_table" msprop:Generator_TablePropName="purchase_trans_table" msprop:Generator_RowDeletingName="purchase_trans_tableRowDeleting" msprop:Generator_RowChangingName="purchase_trans_tableRowChanging" msprop:Generator_RowEvHandlerName="purchase_trans_tableRowChangeEventHandler" msprop:Generator_RowDeletedName="purchase_trans_tableRowDeleted" msprop:Generator_UserTableName="purchase_trans_table" msprop:Generator_RowChangedName="purchase_trans_tableRowChanged" msprop:Generator_RowEvArgName="purchase_trans_tableRowChangeEvent" msprop:Generator_RowClassName="purchase_trans_tableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Purchases" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPurchases" msprop:Generator_ColumnPropNameInRow="Purchases" msprop:Generator_ColumnPropNameInTable="PurchasesColumn" msprop:Generator_UserColumnName="Purchases" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PurchaseReturn" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPurchaseReturn" msprop:Generator_ColumnPropNameInRow="PurchaseReturn" msprop:Generator_ColumnPropNameInTable="PurchaseReturnColumn" msprop:Generator_UserColumnName="PurchaseReturn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PurchaseDiscount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPurchaseDiscount" msprop:Generator_ColumnPropNameInRow="PurchaseDiscount" msprop:Generator_ColumnPropNameInTable="PurchaseDiscountColumn" msprop:Generator_UserColumnName="PurchaseDiscount" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="begin_end_inv_table" msprop:Generator_TableClassName="begin_end_inv_tableDataTable" msprop:Generator_TableVarName="tablebegin_end_inv_table" msprop:Generator_TablePropName="begin_end_inv_table" msprop:Generator_RowDeletingName="begin_end_inv_tableRowDeleting" msprop:Generator_RowChangingName="begin_end_inv_tableRowChanging" msprop:Generator_RowEvHandlerName="begin_end_inv_tableRowChangeEventHandler" msprop:Generator_RowDeletedName="begin_end_inv_tableRowDeleted" msprop:Generator_UserTableName="begin_end_inv_table" msprop:Generator_RowChangedName="begin_end_inv_tableRowChanged" msprop:Generator_RowEvArgName="begin_end_inv_tableRowChangeEvent" msprop:Generator_RowClassName="begin_end_inv_tableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item_no" msprop:Generator_ColumnVarNameInTable="columnitem_no" msprop:Generator_ColumnPropNameInRow="item_no" msprop:Generator_ColumnPropNameInTable="item_noColumn" msprop:Generator_UserColumnName="item_no" type="xs:int" />
+              <xs:element name="item_name" msprop:Generator_ColumnVarNameInTable="columnitem_name" msprop:Generator_ColumnPropNameInRow="item_name" msprop:Generator_ColumnPropNameInTable="item_nameColumn" msprop:Generator_UserColumnName="item_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="trans_date" msprop:Generator_ColumnVarNameInTable="columntrans_date" msprop:Generator_ColumnPropNameInRow="trans_date" msprop:Generator_ColumnPropNameInTable="trans_dateColumn" msprop:Generator_UserColumnName="trans_date" type="xs:dateTime" />
+              <xs:element name="price_beg" msprop:Generator_ColumnVarNameInTable="columnprice_beg" msprop:Generator_ColumnPropNameInRow="price_beg" msprop:Generator_ColumnPropNameInTable="price_begColumn" msprop:Generator_UserColumnName="price_beg" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:begin_end_inv_table" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_customer_balance" targetNamespace="http://tempuri.org/ds_customer_balance.xsd" xmlns:mstns="http://tempuri.org/ds_customer_balance.xsd" xmlns="http://tempuri.org/ds_customer_balance.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="pos_marishaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="pos_marishaConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Marisha_POS.My.MySettings.GlobalReference.Default.pos_marishaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sales_trans_tableTableAdapter" GeneratorDataComponentClassName="sales_trans_tableTableAdapter" Name="sales_trans_table" UserDataComponentName="sales_trans_tableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="pos_marishaConnectionString (MySettings)" DbObjectName="pos_marisha.dbo.sales_trans_table" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+    a.[customer_no], a.[customer_name],
+    (SELECT SUM(a1.grand_total) - SUM(a1.customer_partial_payment) FROM sales_trans_table AS a1 WHERE a1.customer_no = a.customer_no) 
+  - (SELECT SUM(b2.amount_paid) FROM customer_payments_table AS b2 WHERE b2.customer_no = a.customer_no) as Remaining_Bal
+FROM sales_trans_table AS a
+    INNER JOIN customer_payments_table AS b 
+        ON (a.[customer_no] = b.[customer_no])
+GROUP BY a.[customer_no],a.[customer_name]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="customer_no" DataSetColumn="customer_no" />
+              <Mapping SourceColumn="customer_name" DataSetColumn="customer_name" />
+              <Mapping SourceColumn="Remaining_Bal" DataSetColumn="Remaining_Bal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_customer_balance" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_customer_balance" msprop:Generator_UserDSName="ds_customer_balance">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="sales_trans_table" msprop:Generator_TableClassName="sales_trans_tableDataTable" msprop:Generator_TableVarName="tablesales_trans_table" msprop:Generator_TablePropName="sales_trans_table" msprop:Generator_RowDeletingName="sales_trans_tableRowDeleting" msprop:Generator_RowChangingName="sales_trans_tableRowChanging" msprop:Generator_RowEvHandlerName="sales_trans_tableRowChangeEventHandler" msprop:Generator_RowDeletedName="sales_trans_tableRowDeleted" msprop:Generator_UserTableName="sales_trans_table" msprop:Generator_RowChangedName="sales_trans_tableRowChanged" msprop:Generator_RowEvArgName="sales_trans_tableRowChangeEvent" msprop:Generator_RowClassName="sales_trans_tableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="customer_no" msprop:Generator_ColumnVarNameInTable="columncustomer_no" msprop:Generator_ColumnPropNameInRow="customer_no" msprop:Generator_ColumnPropNameInTable="customer_noColumn" msprop:Generator_UserColumnName="customer_no" type="xs:int" minOccurs="0" />
+              <xs:element name="customer_name" msprop:Generator_ColumnVarNameInTable="columncustomer_name" msprop:Generator_ColumnPropNameInRow="customer_name" msprop:Generator_ColumnPropNameInTable="customer_nameColumn" msprop:Generator_UserColumnName="customer_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Remaining_Bal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRemaining_Bal" msprop:Generator_ColumnPropNameInRow="Remaining_Bal" msprop:Generator_ColumnPropNameInTable="Remaining_BalColumn" msprop:Generator_UserColumnName="Remaining_Bal" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

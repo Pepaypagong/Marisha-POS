@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_ar_payments" targetNamespace="http://tempuri.org/ds_ar_payments.xsd" xmlns:mstns="http://tempuri.org/ds_ar_payments.xsd" xmlns="http://tempuri.org/ds_ar_payments.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="pos_marishaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="pos_marishaConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Marisha_POS.My.MySettings.GlobalReference.Default.pos_marishaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="customer_payments_tableTableAdapter" GeneratorDataComponentClassName="customer_payments_tableTableAdapter" Name="customer_payments_table" UserDataComponentName="customer_payments_tableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="pos_marishaConnectionString (MySettings)" DbObjectName="pos_marisha.dbo.customer_payments_table" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT customer_payments_table.ID, customer_payments_table.customer_no, 
+customers_table.first_name + ' ' + customers_table.last_name as Fullname, customer_payments_table.amount_paid, customer_payments_table.date_pay 
+FROM customer_payments_table 
+INNER JOIN customers_table 
+ON customer_payments_table.customer_no  = customers_table.customer_no</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="customer_no" DataSetColumn="customer_no" />
+              <Mapping SourceColumn="date_pay" DataSetColumn="date_pay" />
+              <Mapping SourceColumn="amount_paid" DataSetColumn="amount_paid" />
+              <Mapping SourceColumn="Fullname" DataSetColumn="Fullname" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_ar_payments" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_ar_payments" msprop:Generator_UserDSName="ds_ar_payments">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="customer_payments_table" msprop:Generator_TableClassName="customer_payments_tableDataTable" msprop:Generator_TableVarName="tablecustomer_payments_table" msprop:Generator_RowChangedName="customer_payments_tableRowChanged" msprop:Generator_TablePropName="customer_payments_table" msprop:Generator_RowDeletingName="customer_payments_tableRowDeleting" msprop:Generator_RowChangingName="customer_payments_tableRowChanging" msprop:Generator_RowEvHandlerName="customer_payments_tableRowChangeEventHandler" msprop:Generator_RowDeletedName="customer_payments_tableRowDeleted" msprop:Generator_RowClassName="customer_payments_tableRow" msprop:Generator_UserTableName="customer_payments_table" msprop:Generator_RowEvArgName="customer_payments_tableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="customer_no" msprop:Generator_ColumnVarNameInTable="columncustomer_no" msprop:Generator_ColumnPropNameInRow="customer_no" msprop:Generator_ColumnPropNameInTable="customer_noColumn" msprop:Generator_UserColumnName="customer_no" type="xs:int" />
+              <xs:element name="date_pay" msprop:Generator_ColumnVarNameInTable="columndate_pay" msprop:Generator_ColumnPropNameInRow="date_pay" msprop:Generator_ColumnPropNameInTable="date_payColumn" msprop:Generator_UserColumnName="date_pay" type="xs:dateTime" />
+              <xs:element name="amount_paid" msprop:Generator_ColumnVarNameInTable="columnamount_paid" msprop:Generator_ColumnPropNameInRow="amount_paid" msprop:Generator_ColumnPropNameInTable="amount_paidColumn" msprop:Generator_UserColumnName="amount_paid" type="xs:decimal" />
+              <xs:element name="Fullname" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFullname" msprop:Generator_ColumnPropNameInRow="Fullname" msprop:Generator_ColumnPropNameInTable="FullnameColumn" msprop:Generator_UserColumnName="Fullname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="101" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:customer_payments_table" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

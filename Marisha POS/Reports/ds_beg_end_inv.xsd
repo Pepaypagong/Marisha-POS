@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_beg_end_inv" targetNamespace="http://tempuri.org/ds_beg_end_inv.xsd" xmlns:mstns="http://tempuri.org/ds_beg_end_inv.xsd" xmlns="http://tempuri.org/ds_beg_end_inv.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="pos_marishaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="pos_marishaConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Marisha_POS.My.MySettings.GlobalReference.Default.pos_marishaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_beg_end_inv" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_beg_end_inv" msprop:Generator_UserDSName="ds_beg_end_inv">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="item_flow" msprop:Generator_TableClassName="item_flowDataTable" msprop:Generator_TableVarName="tableitem_flow" msprop:Generator_TablePropName="item_flow" msprop:Generator_RowDeletingName="item_flowRowDeleting" msprop:Generator_RowChangingName="item_flowRowChanging" msprop:Generator_RowEvHandlerName="item_flowRowChangeEventHandler" msprop:Generator_RowDeletedName="item_flowRowDeleted" msprop:Generator_UserTableName="item_flow" msprop:Generator_RowChangedName="item_flowRowChanged" msprop:Generator_RowEvArgName="item_flowRowChangeEvent" msprop:Generator_RowClassName="item_flowRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item_no" msprop:Generator_ColumnVarNameInTable="columnitem_no" msprop:Generator_ColumnPropNameInRow="item_no" msprop:Generator_ColumnPropNameInTable="item_noColumn" msprop:Generator_UserColumnName="item_no" type="xs:int" minOccurs="0" />
+              <xs:element name="barcode" msprop:Generator_ColumnVarNameInTable="columnbarcode" msprop:Generator_ColumnPropNameInRow="barcode" msprop:Generator_ColumnPropNameInTable="barcodeColumn" msprop:Generator_UserColumnName="barcode" type="xs:string" minOccurs="0" />
+              <xs:element name="item_name" msprop:Generator_ColumnVarNameInTable="columnitem_name" msprop:Generator_ColumnPropNameInRow="item_name" msprop:Generator_ColumnPropNameInTable="item_nameColumn" msprop:Generator_UserColumnName="item_name" type="xs:string" minOccurs="0" />
+              <xs:element name="beginInv" msprop:Generator_ColumnVarNameInTable="columnbeginInv" msprop:Generator_ColumnPropNameInRow="beginInv" msprop:Generator_ColumnPropNameInTable="beginInvColumn" msprop:Generator_UserColumnName="beginInv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="beginInvAmount" msprop:Generator_ColumnVarNameInTable="columnbeginInvAmount" msprop:Generator_ColumnPropNameInRow="beginInvAmount" msprop:Generator_ColumnPropNameInTable="beginInvAmountColumn" msprop:Generator_UserColumnName="beginInvAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="totalIn" msprop:Generator_ColumnVarNameInTable="columntotalIn" msprop:Generator_ColumnPropNameInRow="totalIn" msprop:Generator_ColumnPropNameInTable="totalInColumn" msprop:Generator_UserColumnName="totalIn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="totalInAmount" msprop:Generator_ColumnVarNameInTable="columntotalInAmount" msprop:Generator_ColumnPropNameInRow="totalInAmount" msprop:Generator_ColumnPropNameInTable="totalInAmountColumn" msprop:Generator_UserColumnName="totalInAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="totalOut" msprop:Generator_ColumnVarNameInTable="columntotalOut" msprop:Generator_ColumnPropNameInRow="totalOut" msprop:Generator_ColumnPropNameInTable="totalOutColumn" msprop:Generator_UserColumnName="totalOut" type="xs:decimal" minOccurs="0" />
+              <xs:element name="totalOutAmount" msprop:Generator_ColumnVarNameInTable="columntotalOutAmount" msprop:Generator_ColumnPropNameInRow="totalOutAmount" msprop:Generator_ColumnPropNameInTable="totalOutAmountColumn" msprop:Generator_UserColumnName="totalOutAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="endingInv" msprop:Generator_ColumnVarNameInTable="columnendingInv" msprop:Generator_ColumnPropNameInRow="endingInv" msprop:Generator_ColumnPropNameInTable="endingInvColumn" msprop:Generator_UserColumnName="endingInv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="endingInvAmount" msprop:Generator_ColumnVarNameInTable="columnendingInvAmount" msprop:Generator_ColumnPropNameInRow="endingInvAmount" msprop:Generator_ColumnPropNameInTable="endingInvAmountColumn" msprop:Generator_UserColumnName="endingInvAmount" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:item_flow" />
+      <xs:field xpath="mstns:item_no" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
