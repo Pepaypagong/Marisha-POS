@@ -81,4 +81,9 @@
         End If
     End Sub
 
+    Private Sub cmd_transactions_Click(sender As Object, e As EventArgs) Handles cmd_transactions.Click
+        Me.Hide()
+        frm_transactions.showdialog()
+    End Sub
+
 End Class

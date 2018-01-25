@@ -609,6 +609,13 @@
     </Compile>
     <Compile Include="Suppliers\suppliers_q.vb" />
     <Compile Include="dateHelper.vb" />
+    <Compile Include="Transactions\frm_transactions.Designer.vb">
+      <DependentUpon>frm_transactions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\frm_transactions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\transactionsService.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Accounts\frm_accounts.resx">
@@ -840,6 +847,9 @@
     <EmbeddedResource Include="Suppliers\frm_suppliers_add_update.resx">
       <DependentUpon>frm_suppliers_add_update.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\frm_transactions.resx">
+      <DependentUpon>frm_transactions.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -1061,6 +1071,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Untitled-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\purchase return.png" />
+    <None Include="Resources\sales_return1.png" />
+    <None Include="Resources\sales_return.bmp" />
+    <Content Include="Resources\sales_return.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,7 +6,50 @@ Public Class customers_q
     Dim SQL As New SQLControl
 
     'ACCOUNTS MAIN FORM'
-    
+
+    Public Function GetCustomers As Datatable
+
+        dim customers as new Datatable
+        
+         Try
+            Dim params As New Dictionary(Of String, Object)
+
+            Dim query_string As String = "select first_name + ' ' + " &
+                                            "middle_name + ' ' + " &
+                                            "last_name as full_name " &
+                                            "from customers_table"
+
+           customers = SQL.GlobalFetch(query_string,params)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return customers
+
+    End Function
+
+     Public Sub insert_supplier(supplier_no As string, supplier_name As String, contact_no As String, address As String)
+        dim rowsAffected as integer = 0
+        Try
+            Dim params As New Dictionary(Of String, Object)
+            params.Add("@supplier_no", supplier_no)
+            params.Add("@supplier_name", supplier_name)
+            params.Add("@contact_no", contact_no)
+            params.Add("@address", address)
+
+            Dim insert_supplier As String = "INSERT INTO supplier_table(supplier_no,supplier_name,contact_no,address)VALUES " &
+            "(@supplier_no,@supplier_name,@contact_no,@address)"
+
+            SQL.GlobalInsertUpdate(insert_supplier,params)
+
+            MsgBox(" Supplier Successfully Added!", MsgBoxStyle.Information, " Supplier Record Created")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
+
     Public Sub load_customers()
         Using cmd As New SqlCommand("SELECT * FROM customers_table", SQL.SQLCon)
             cmd.CommandType = CommandType.Text

@@ -44,15 +44,17 @@ Partial Class frm_choose
         Me.cmd_customers = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cmd_suppliers = New System.Windows.Forms.Button()
-        Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pic_user, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.cmd_transactions = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Panel1.SuspendLayout
+        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pic_user,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.AutoSize = true
+        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 48!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(166, 10)
         Me.Label1.Name = "Label1"
@@ -62,8 +64,8 @@ Partial Class frm_choose
         '
         'lbl_name
         '
-        Me.lbl_name.AutoSize = True
-        Me.lbl_name.Font = New System.Drawing.Font("Times New Roman", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_name.AutoSize = true
+        Me.lbl_name.Font = New System.Drawing.Font("Times New Roman", 18!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbl_name.ForeColor = System.Drawing.Color.White
         Me.lbl_name.Location = New System.Drawing.Point(183, 83)
         Me.lbl_name.Name = "lbl_name"
@@ -73,8 +75,8 @@ Partial Class frm_choose
         '
         'lbl_position
         '
-        Me.lbl_position.AutoSize = True
-        Me.lbl_position.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_position.AutoSize = true
+        Me.lbl_position.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbl_position.ForeColor = System.Drawing.Color.White
         Me.lbl_position.Location = New System.Drawing.Point(184, 109)
         Me.lbl_position.Name = "lbl_position"
@@ -85,7 +87,7 @@ Partial Class frm_choose
         'Label5
         '
         Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(153, 261)
         Me.Label5.Name = "Label5"
@@ -97,7 +99,7 @@ Partial Class frm_choose
         'Label7
         '
         Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
         Me.Label7.Location = New System.Drawing.Point(280, 261)
         Me.Label7.Name = "Label7"
@@ -109,7 +111,7 @@ Partial Class frm_choose
         'Label8
         '
         Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(404, 261)
         Me.Label8.Name = "Label8"
@@ -121,7 +123,7 @@ Partial Class frm_choose
         'Label9
         '
         Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Black
         Me.Label9.Location = New System.Drawing.Point(807, 261)
         Me.Label9.Name = "Label9"
@@ -152,7 +154,7 @@ Partial Class frm_choose
         Me.lbl_account_no.Name = "lbl_account_no"
         Me.lbl_account_no.Size = New System.Drawing.Size(47, 15)
         Me.lbl_account_no.TabIndex = 26
-        Me.lbl_account_no.Visible = False
+        Me.lbl_account_no.Visible = false
         '
         'PictureBox2
         '
@@ -164,24 +166,24 @@ Partial Class frm_choose
         Me.PictureBox2.Size = New System.Drawing.Size(211, 131)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 9
-        Me.PictureBox2.TabStop = False
+        Me.PictureBox2.TabStop = false
         '
         'pic_user
         '
         Me.pic_user.BackColor = System.Drawing.Color.White
         Me.pic_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pic_user.Image = CType(resources.GetObject("pic_user.Image"), System.Drawing.Image)
+        Me.pic_user.Image = CType(resources.GetObject("pic_user.Image"),System.Drawing.Image)
         Me.pic_user.Location = New System.Drawing.Point(28, 10)
         Me.pic_user.Name = "pic_user"
         Me.pic_user.Size = New System.Drawing.Size(136, 124)
         Me.pic_user.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pic_user.TabIndex = 7
-        Me.pic_user.TabStop = False
+        Me.pic_user.TabStop = false
         '
         'Label10
         '
         Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
         Me.Label10.Location = New System.Drawing.Point(24, 261)
         Me.Label10.Name = "Label10"
@@ -198,13 +200,13 @@ Partial Class frm_choose
         Me.cmd_pos.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke
         Me.cmd_pos.FlatAppearance.BorderSize = 0
         Me.cmd_pos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmd_pos.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_pos.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.cmd_pos.Location = New System.Drawing.Point(24, 168)
         Me.cmd_pos.Name = "cmd_pos"
         Me.cmd_pos.Size = New System.Drawing.Size(100, 90)
         Me.cmd_pos.TabIndex = 0
         Me.cmd_pos.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.cmd_pos.UseVisualStyleBackColor = False
+        Me.cmd_pos.UseVisualStyleBackColor = false
         '
         'cmd_salesrep
         '
@@ -214,13 +216,13 @@ Partial Class frm_choose
         Me.cmd_salesrep.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke
         Me.cmd_salesrep.FlatAppearance.BorderSize = 0
         Me.cmd_salesrep.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmd_salesrep.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_salesrep.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.cmd_salesrep.Location = New System.Drawing.Point(286, 168)
         Me.cmd_salesrep.Name = "cmd_salesrep"
         Me.cmd_salesrep.Size = New System.Drawing.Size(100, 90)
         Me.cmd_salesrep.TabIndex = 2
         Me.cmd_salesrep.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.cmd_salesrep.UseVisualStyleBackColor = False
+        Me.cmd_salesrep.UseVisualStyleBackColor = false
         '
         'cmd_logout
         '
@@ -230,13 +232,13 @@ Partial Class frm_choose
         Me.cmd_logout.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke
         Me.cmd_logout.FlatAppearance.BorderSize = 0
         Me.cmd_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmd_logout.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_logout.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.cmd_logout.Location = New System.Drawing.Point(807, 168)
         Me.cmd_logout.Name = "cmd_logout"
         Me.cmd_logout.Size = New System.Drawing.Size(100, 90)
         Me.cmd_logout.TabIndex = 6
         Me.cmd_logout.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.cmd_logout.UseVisualStyleBackColor = False
+        Me.cmd_logout.UseVisualStyleBackColor = false
         '
         'cmd_accounts
         '
@@ -246,13 +248,13 @@ Partial Class frm_choose
         Me.cmd_accounts.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke
         Me.cmd_accounts.FlatAppearance.BorderSize = 0
         Me.cmd_accounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmd_accounts.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_accounts.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.cmd_accounts.Location = New System.Drawing.Point(418, 168)
         Me.cmd_accounts.Name = "cmd_accounts"
         Me.cmd_accounts.Size = New System.Drawing.Size(100, 90)
         Me.cmd_accounts.TabIndex = 3
         Me.cmd_accounts.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.cmd_accounts.UseVisualStyleBackColor = False
+        Me.cmd_accounts.UseVisualStyleBackColor = false
         '
         'cmd_inv
         '
@@ -262,18 +264,18 @@ Partial Class frm_choose
         Me.cmd_inv.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke
         Me.cmd_inv.FlatAppearance.BorderSize = 0
         Me.cmd_inv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmd_inv.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_inv.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.cmd_inv.Location = New System.Drawing.Point(153, 168)
         Me.cmd_inv.Name = "cmd_inv"
         Me.cmd_inv.Size = New System.Drawing.Size(100, 90)
         Me.cmd_inv.TabIndex = 1
         Me.cmd_inv.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.cmd_inv.UseVisualStyleBackColor = False
+        Me.cmd_inv.UseVisualStyleBackColor = false
         '
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(535, 261)
         Me.Label4.Name = "Label4"
@@ -290,18 +292,18 @@ Partial Class frm_choose
         Me.cmd_customers.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke
         Me.cmd_customers.FlatAppearance.BorderSize = 0
         Me.cmd_customers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmd_customers.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_customers.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.cmd_customers.Location = New System.Drawing.Point(549, 168)
         Me.cmd_customers.Name = "cmd_customers"
         Me.cmd_customers.Size = New System.Drawing.Size(100, 90)
         Me.cmd_customers.TabIndex = 4
         Me.cmd_customers.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.cmd_customers.UseVisualStyleBackColor = False
+        Me.cmd_customers.UseVisualStyleBackColor = false
         '
         'Label6
         '
         Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(665, 261)
         Me.Label6.Name = "Label6"
@@ -318,20 +320,50 @@ Partial Class frm_choose
         Me.cmd_suppliers.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke
         Me.cmd_suppliers.FlatAppearance.BorderSize = 0
         Me.cmd_suppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmd_suppliers.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_suppliers.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.cmd_suppliers.Location = New System.Drawing.Point(679, 168)
         Me.cmd_suppliers.Name = "cmd_suppliers"
         Me.cmd_suppliers.Size = New System.Drawing.Size(100, 90)
         Me.cmd_suppliers.TabIndex = 5
         Me.cmd_suppliers.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.cmd_suppliers.UseVisualStyleBackColor = False
+        Me.cmd_suppliers.UseVisualStyleBackColor = false
+        '
+        'cmd_transactions
+        '
+        Me.cmd_transactions.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.cmd_transactions.BackgroundImage = Global.Marisha_POS.My.Resources.Resources.inv
+        Me.cmd_transactions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmd_transactions.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke
+        Me.cmd_transactions.FlatAppearance.BorderSize = 0
+        Me.cmd_transactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmd_transactions.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmd_transactions.Location = New System.Drawing.Point(286, 306)
+        Me.cmd_transactions.Name = "cmd_transactions"
+        Me.cmd_transactions.Size = New System.Drawing.Size(100, 90)
+        Me.cmd_transactions.TabIndex = 25
+        Me.cmd_transactions.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.cmd_transactions.UseVisualStyleBackColor = false
+        '
+        'Label2
+        '
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(283, 396)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(112, 29)
+        Me.Label2.TabIndex = 26
+        Me.Label2.Text = "Transactions"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frm_choose
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
-        Me.ClientSize = New System.Drawing.Size(932, 299)
+        Me.ClientSize = New System.Drawing.Size(932, 422)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.cmd_transactions)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.cmd_suppliers)
         Me.Controls.Add(Me.Label4)
@@ -348,18 +380,18 @@ Partial Class frm_choose
         Me.Controls.Add(Me.cmd_accounts)
         Me.Controls.Add(Me.cmd_inv)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
+        Me.MaximizeBox = false
+        Me.MinimizeBox = false
         Me.Name = "frm_choose"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Marisha POS - Home"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pic_user, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(false)
+        Me.Panel1.PerformLayout
+        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pic_user,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
     Friend WithEvents cmd_inv As System.Windows.Forms.Button
     Friend WithEvents cmd_accounts As System.Windows.Forms.Button
     Friend WithEvents cmd_logout As System.Windows.Forms.Button
@@ -381,4 +413,6 @@ Partial Class frm_choose
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents cmd_suppliers As System.Windows.Forms.Button
     Friend WithEvents lbl_account_no As System.Windows.Forms.Label
+    Friend WithEvents cmd_transactions As Button
+    Friend WithEvents Label2 As Label
 End Class

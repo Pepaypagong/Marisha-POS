@@ -72,4 +72,27 @@ Public Class SQLControl
 
     End Function
 
+    Public Function GlobalFetch(sql As String, parameters As Dictionary(Of String, Object)) As DataTable
+       Dim rows As DataTable
+
+        Using con As SqlConnection = New SqlConnection(sqlConnectionString)
+            con.Open()
+            Dim cmd As SqlCommand = New SqlCommand(sql, con)
+            cmd.CommandType = CommandType.Text
+            For Each key As String In parameters.Keys
+                cmd.Parameters.AddWithValue(key, parameters(key))
+            Next
+
+            Using sda As New SqlDataAdapter(cmd)
+                dim dt As New DataTable
+                sda.Fill(dt) 'fills the datatable with data
+                rows = dt
+            End using
+
+        End Using
+
+        Return rows
+
+    End Function
+
 End Class
