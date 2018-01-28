@@ -14,7 +14,7 @@ Public Class customers_q
          Try
             Dim params As New Dictionary(Of String, Object)
 
-            Dim query_string As String = "select first_name + ' ' + " &
+            Dim query_string As String = "select customer_no, first_name + ' ' + " &
                                             "middle_name + ' ' + " &
                                             "last_name as full_name " &
                                             "from customers_table"

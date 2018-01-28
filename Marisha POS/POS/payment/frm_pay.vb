@@ -28,7 +28,7 @@
                 'new global insert for item flow
                 For Each row As DataGridViewRow In frm_invoice.dgv_item_cart.Rows
                     itemFlowServce.InsertItemFlow(row.Cells(0).Value, DateTime.Now, 
-                                                  "SALES", 0, row.Cells(4).Value, 0, row.Cells(9).Value)
+                                                  "SALES", 0, row.Cells(4).Value, 0, row.Cells(7).Value)
                 Next
 
                 ''pos_query.insert_begin_end_sales()

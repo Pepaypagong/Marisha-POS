@@ -22,29 +22,21 @@ Partial Class frm_transactions
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.lbl_title = New System.Windows.Forms.Label()
-        Me.dgv_cash_trans = New System.Windows.Forms.DataGridView()
-        Me.trans_no = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.trans_datetime = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.sub_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.disc_percent = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.total_discount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grand_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cash_tendered = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.change = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btn_show_details = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.dgv_transactions = New System.Windows.Forms.DataGridView()
         Me.cbo_sales_type = New System.Windows.Forms.ComboBox()
         Me.lbl_sales_type = New System.Windows.Forms.Label()
-        Me.cbo_customer = New System.Windows.Forms.ComboBox()
+        Me.cbo_id = New System.Windows.Forms.ComboBox()
         Me.lbl_customer = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lbl_date_from = New System.Windows.Forms.Label()
         Me.dtp_purchases_to = New System.Windows.Forms.DateTimePicker()
         Me.dtp_purchases_from = New System.Windows.Forms.DateTimePicker()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lbl_date_to = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmd_rejects = New System.Windows.Forms.Button()
@@ -58,10 +50,11 @@ Partial Class frm_transactions
         Me.cmd_purchase_returns = New System.Windows.Forms.Button()
         Me.cmd_sales_return = New System.Windows.Forms.Button()
         Me.cmd_sales = New System.Windows.Forms.Button()
-        Me.cmd_clear = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.cmd_view = New System.Windows.Forms.Button()
+        Me.cmd_delete = New System.Windows.Forms.Button()
         Me.Label22 = New System.Windows.Forms.Label()
-        CType(Me.dgv_cash_trans,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.cmd_new = New System.Windows.Forms.Button()
+        CType(Me.dgv_transactions,System.ComponentModel.ISupportInitialize).BeginInit
         Me.Panel1.SuspendLayout
         Me.SuspendLayout
         '
@@ -81,112 +74,50 @@ Partial Class frm_transactions
         Me.lbl_title.Font = New System.Drawing.Font("Tahoma", 40!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbl_title.Location = New System.Drawing.Point(11, 20)
         Me.lbl_title.Name = "lbl_title"
-        Me.lbl_title.Size = New System.Drawing.Size(327, 65)
+        Me.lbl_title.Size = New System.Drawing.Size(466, 65)
         Me.lbl_title.TabIndex = 51
-        Me.lbl_title.Text = "Transactions"
+        Me.lbl_title.Text = "Sales Transactions"
         '
-        'dgv_cash_trans
+        'dgv_transactions
         '
-        Me.dgv_cash_trans.AllowUserToAddRows = false
-        Me.dgv_cash_trans.AllowUserToDeleteRows = false
-        Me.dgv_cash_trans.AllowUserToResizeRows = false
-        Me.dgv_cash_trans.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.dgv_cash_trans.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.dgv_cash_trans.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_cash_trans.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
-        Me.dgv_cash_trans.ColumnHeadersHeight = 25
-        Me.dgv_cash_trans.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.trans_no, Me.trans_datetime, Me.sub_total, Me.disc_percent, Me.total_discount, Me.grand_total, Me.cash_tendered, Me.change, Me.btn_show_details})
-        Me.dgv_cash_trans.Cursor = System.Windows.Forms.Cursors.Hand
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_cash_trans.DefaultCellStyle = DataGridViewCellStyle8
-        Me.dgv_cash_trans.EnableHeadersVisualStyles = false
-        Me.dgv_cash_trans.Location = New System.Drawing.Point(12, 209)
-        Me.dgv_cash_trans.MultiSelect = false
-        Me.dgv_cash_trans.Name = "dgv_cash_trans"
-        Me.dgv_cash_trans.ReadOnly = true
-        Me.dgv_cash_trans.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.dgv_cash_trans.RowHeadersVisible = false
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.dgv_cash_trans.RowsDefaultCellStyle = DataGridViewCellStyle9
-        Me.dgv_cash_trans.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgv_cash_trans.Size = New System.Drawing.Size(1270, 473)
-        Me.dgv_cash_trans.TabIndex = 60
-        '
-        'trans_no
-        '
-        Me.trans_no.HeaderText = "Trans. No."
-        Me.trans_no.Name = "trans_no"
-        Me.trans_no.ReadOnly = true
-        Me.trans_no.Width = 80
-        '
-        'trans_datetime
-        '
-        Me.trans_datetime.HeaderText = "Date and Time"
-        Me.trans_datetime.Name = "trans_datetime"
-        Me.trans_datetime.ReadOnly = true
-        Me.trans_datetime.Width = 150
-        '
-        'sub_total
-        '
-        Me.sub_total.HeaderText = "Sub Total"
-        Me.sub_total.Name = "sub_total"
-        Me.sub_total.ReadOnly = true
-        Me.sub_total.Width = 110
-        '
-        'disc_percent
-        '
-        Me.disc_percent.HeaderText = "Disc. (%)"
-        Me.disc_percent.Name = "disc_percent"
-        Me.disc_percent.ReadOnly = true
-        Me.disc_percent.Visible = false
-        Me.disc_percent.Width = 90
-        '
-        'total_discount
-        '
-        Me.total_discount.HeaderText = "Total Discount"
-        Me.total_discount.Name = "total_discount"
-        Me.total_discount.ReadOnly = true
-        Me.total_discount.Width = 110
-        '
-        'grand_total
-        '
-        Me.grand_total.HeaderText = "Grand Total"
-        Me.grand_total.Name = "grand_total"
-        Me.grand_total.ReadOnly = true
-        Me.grand_total.Width = 110
-        '
-        'cash_tendered
-        '
-        Me.cash_tendered.HeaderText = "Cash Tendered"
-        Me.cash_tendered.Name = "cash_tendered"
-        Me.cash_tendered.ReadOnly = true
-        '
-        'change
-        '
-        Me.change.HeaderText = "Change"
-        Me.change.Name = "change"
-        Me.change.ReadOnly = true
-        '
-        'btn_show_details
-        '
-        Me.btn_show_details.HeaderText = "Show Details"
-        Me.btn_show_details.Name = "btn_show_details"
-        Me.btn_show_details.ReadOnly = true
-        Me.btn_show_details.Text = "Show Details"
-        Me.btn_show_details.UseColumnTextForButtonValue = true
+        Me.dgv_transactions.AllowUserToAddRows = false
+        Me.dgv_transactions.AllowUserToDeleteRows = false
+        Me.dgv_transactions.AllowUserToResizeRows = false
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro
+        Me.dgv_transactions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgv_transactions.BackgroundColor = System.Drawing.Color.WhiteSmoke
+        Me.dgv_transactions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.dgv_transactions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_transactions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgv_transactions.ColumnHeadersHeight = 25
+        Me.dgv_transactions.Cursor = System.Windows.Forms.Cursors.Hand
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_transactions.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgv_transactions.EnableHeadersVisualStyles = false
+        Me.dgv_transactions.Location = New System.Drawing.Point(12, 209)
+        Me.dgv_transactions.MultiSelect = false
+        Me.dgv_transactions.Name = "dgv_transactions"
+        Me.dgv_transactions.ReadOnly = true
+        Me.dgv_transactions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgv_transactions.RowHeadersVisible = false
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.dgv_transactions.RowsDefaultCellStyle = DataGridViewCellStyle4
+        Me.dgv_transactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgv_transactions.Size = New System.Drawing.Size(1270, 473)
+        Me.dgv_transactions.TabIndex = 60
         '
         'cbo_sales_type
         '
@@ -209,15 +140,15 @@ Partial Class frm_transactions
         Me.lbl_sales_type.TabIndex = 61
         Me.lbl_sales_type.Text = "Sales Type :"
         '
-        'cbo_customer
+        'cbo_id
         '
-        Me.cbo_customer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbo_customer.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cbo_customer.FormattingEnabled = true
-        Me.cbo_customer.Location = New System.Drawing.Point(109, 176)
-        Me.cbo_customer.Name = "cbo_customer"
-        Me.cbo_customer.Size = New System.Drawing.Size(268, 24)
-        Me.cbo_customer.TabIndex = 64
+        Me.cbo_id.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbo_id.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cbo_id.FormattingEnabled = true
+        Me.cbo_id.Location = New System.Drawing.Point(109, 176)
+        Me.cbo_id.Name = "cbo_id"
+        Me.cbo_id.Size = New System.Drawing.Size(268, 24)
+        Me.cbo_id.TabIndex = 64
         '
         'lbl_customer
         '
@@ -231,23 +162,23 @@ Partial Class frm_transactions
         Me.lbl_customer.Text = "Customer :"
         Me.lbl_customer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label3
+        'lbl_date_from
         '
-        Me.Label3.AutoSize = true
-        Me.Label3.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(420, 149)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(144, 16)
-        Me.Label3.TabIndex = 65
-        Me.Label3.Text = "Show Records From :"
+        Me.lbl_date_from.AutoSize = true
+        Me.lbl_date_from.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_date_from.ForeColor = System.Drawing.Color.Black
+        Me.lbl_date_from.Location = New System.Drawing.Point(420, 149)
+        Me.lbl_date_from.Name = "lbl_date_from"
+        Me.lbl_date_from.Size = New System.Drawing.Size(144, 16)
+        Me.lbl_date_from.TabIndex = 65
+        Me.lbl_date_from.Text = "Show Records From :"
         '
         'dtp_purchases_to
         '
         Me.dtp_purchases_to.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.dtp_purchases_to.Location = New System.Drawing.Point(571, 174)
         Me.dtp_purchases_to.Name = "dtp_purchases_to"
-        Me.dtp_purchases_to.Size = New System.Drawing.Size(263, 23)
+        Me.dtp_purchases_to.Size = New System.Drawing.Size(198, 23)
         Me.dtp_purchases_to.TabIndex = 67
         '
         'dtp_purchases_from
@@ -255,19 +186,19 @@ Partial Class frm_transactions
         Me.dtp_purchases_from.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.dtp_purchases_from.Location = New System.Drawing.Point(570, 146)
         Me.dtp_purchases_from.Name = "dtp_purchases_from"
-        Me.dtp_purchases_from.Size = New System.Drawing.Size(263, 23)
+        Me.dtp_purchases_from.Size = New System.Drawing.Size(199, 23)
         Me.dtp_purchases_from.TabIndex = 66
         '
-        'Label4
+        'lbl_date_to
         '
-        Me.Label4.AutoSize = true
-        Me.Label4.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(532, 179)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(32, 16)
-        Me.Label4.TabIndex = 68
-        Me.Label4.Text = "To :"
+        Me.lbl_date_to.AutoSize = true
+        Me.lbl_date_to.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_date_to.ForeColor = System.Drawing.Color.Black
+        Me.lbl_date_to.Location = New System.Drawing.Point(532, 179)
+        Me.lbl_date_to.Name = "lbl_date_to"
+        Me.lbl_date_to.Size = New System.Drawing.Size(32, 16)
+        Me.lbl_date_to.TabIndex = 68
+        Me.lbl_date_to.Text = "To :"
         '
         'Panel1
         '
@@ -453,31 +384,31 @@ Partial Class frm_transactions
         Me.cmd_sales.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cmd_sales.UseVisualStyleBackColor = false
         '
-        'cmd_clear
+        'cmd_view
         '
-        Me.cmd_clear.BackColor = System.Drawing.Color.White
-        Me.cmd_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmd_clear.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmd_clear.ForeColor = System.Drawing.Color.Black
-        Me.cmd_clear.Location = New System.Drawing.Point(1041, 170)
-        Me.cmd_clear.Name = "cmd_clear"
-        Me.cmd_clear.Size = New System.Drawing.Size(114, 27)
-        Me.cmd_clear.TabIndex = 70
-        Me.cmd_clear.Text = "VIEW"
-        Me.cmd_clear.UseVisualStyleBackColor = false
+        Me.cmd_view.BackColor = System.Drawing.Color.White
+        Me.cmd_view.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmd_view.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmd_view.ForeColor = System.Drawing.Color.Black
+        Me.cmd_view.Location = New System.Drawing.Point(1041, 170)
+        Me.cmd_view.Name = "cmd_view"
+        Me.cmd_view.Size = New System.Drawing.Size(114, 27)
+        Me.cmd_view.TabIndex = 70
+        Me.cmd_view.Text = "VIEW"
+        Me.cmd_view.UseVisualStyleBackColor = false
         '
-        'Button1
+        'cmd_delete
         '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.Black
-        Me.Button1.Location = New System.Drawing.Point(1166, 170)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(114, 27)
-        Me.Button1.TabIndex = 71
-        Me.Button1.Text = "DELETE"
-        Me.Button1.UseVisualStyleBackColor = false
+        Me.cmd_delete.BackColor = System.Drawing.Color.White
+        Me.cmd_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmd_delete.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmd_delete.ForeColor = System.Drawing.Color.Black
+        Me.cmd_delete.Location = New System.Drawing.Point(1166, 170)
+        Me.cmd_delete.Name = "cmd_delete"
+        Me.cmd_delete.Size = New System.Drawing.Size(114, 27)
+        Me.cmd_delete.TabIndex = 71
+        Me.cmd_delete.Text = "DELETE"
+        Me.cmd_delete.UseVisualStyleBackColor = false
         '
         'Label22
         '
@@ -491,24 +422,38 @@ Partial Class frm_transactions
         Me.Label22.TabIndex = 72
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'cmd_new
+        '
+        Me.cmd_new.BackColor = System.Drawing.Color.White
+        Me.cmd_new.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmd_new.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmd_new.ForeColor = System.Drawing.Color.Black
+        Me.cmd_new.Location = New System.Drawing.Point(916, 170)
+        Me.cmd_new.Name = "cmd_new"
+        Me.cmd_new.Size = New System.Drawing.Size(114, 27)
+        Me.cmd_new.TabIndex = 73
+        Me.cmd_new.Text = "NEW"
+        Me.cmd_new.UseVisualStyleBackColor = false
+        '
         'frm_transactions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1294, 694)
+        Me.Controls.Add(Me.cmd_new)
         Me.Controls.Add(Me.Label22)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.cmd_clear)
+        Me.Controls.Add(Me.cmd_delete)
+        Me.Controls.Add(Me.cmd_view)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.lbl_date_to)
         Me.Controls.Add(Me.dtp_purchases_to)
         Me.Controls.Add(Me.dtp_purchases_from)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.cbo_customer)
+        Me.Controls.Add(Me.lbl_date_from)
+        Me.Controls.Add(Me.cbo_id)
         Me.Controls.Add(Me.lbl_customer)
         Me.Controls.Add(Me.cbo_sales_type)
         Me.Controls.Add(Me.lbl_sales_type)
-        Me.Controls.Add(Me.dgv_cash_trans)
+        Me.Controls.Add(Me.dgv_transactions)
         Me.Controls.Add(Me.MenuStrip1)
         Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -517,7 +462,7 @@ Partial Class frm_transactions
         Me.Name = "frm_transactions"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Marisha POS - Transactions"
-        CType(Me.dgv_cash_trans,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dgv_transactions,System.ComponentModel.ISupportInitialize).EndInit
         Me.Panel1.ResumeLayout(false)
         Me.Panel1.PerformLayout
         Me.ResumeLayout(false)
@@ -527,24 +472,15 @@ End Sub
 
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents lbl_title As Label
-    Friend WithEvents dgv_cash_trans As DataGridView
-    Friend WithEvents trans_no As DataGridViewTextBoxColumn
-    Friend WithEvents trans_datetime As DataGridViewTextBoxColumn
-    Friend WithEvents sub_total As DataGridViewTextBoxColumn
-    Friend WithEvents disc_percent As DataGridViewTextBoxColumn
-    Friend WithEvents total_discount As DataGridViewTextBoxColumn
-    Friend WithEvents grand_total As DataGridViewTextBoxColumn
-    Friend WithEvents cash_tendered As DataGridViewTextBoxColumn
-    Friend WithEvents change As DataGridViewTextBoxColumn
-    Friend WithEvents btn_show_details As DataGridViewButtonColumn
+    Friend WithEvents dgv_transactions As DataGridView
     Friend WithEvents cbo_sales_type As ComboBox
     Friend WithEvents lbl_sales_type As Label
-    Friend WithEvents cbo_customer As ComboBox
+    Friend WithEvents cbo_id As ComboBox
     Friend WithEvents lbl_customer As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lbl_date_from As Label
     Friend WithEvents dtp_purchases_to As DateTimePicker
     Friend WithEvents dtp_purchases_from As DateTimePicker
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lbl_date_to As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents cmd_rejects As Button
@@ -558,7 +494,8 @@ End Sub
     Friend WithEvents cmd_purchase_returns As Button
     Friend WithEvents cmd_sales_return As Button
     Friend WithEvents cmd_sales As Button
-    Friend WithEvents cmd_clear As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents cmd_view As Button
+    Friend WithEvents cmd_delete As Button
     Friend WithEvents Label22 As Label
+    Friend WithEvents cmd_new As Button
 End Class
