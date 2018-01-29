@@ -4,7 +4,7 @@
 
     Public Sub FillDgvSales(trans_type As String, date_from As Date, date_to As Date, id As Integer, dgv As DataGridView)
 
-        'dgv.DataSource = Nothing
+        dgv.DataSource = Nothing
 
         Try
             Dim params As New Dictionary(Of String, Object)
@@ -46,9 +46,7 @@
 
             Dim data_table As DataTable = SQL.GlobalFetch(query_string, params)
 
-            generate_grid_columns(dgv, trans_type)
-
-            dgv.DataSource = data_table
+            generate_grid_columns(dgv, trans_type, data_table)
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -56,10 +54,10 @@
 
     End Sub
 
-    Public Sub generate_grid_columns(dgv As DataGridView, trans_type As String)
-        dgv.Dispose() 'release the datagridview
+    Public Sub generate_grid_columns(dgv As DataGridView, trans_type As String, data As DataTable)
 
-        dgv = newDgv() 'create new datagridview
+        destroyDatagridview(frm_transactions)
+        dgv = newDgv 'create new datagridview
 
         Select Case trans_type
 
@@ -318,9 +316,19 @@
 
         End Select
 
+        dgv.DataSource = data
+
     End Sub
 
-    Function newDgv() As DataGridView
+    Private Sub destroyDatagridview(myForm As Form)
+        For i As Integer = myForm.Controls.Count - 1 To 0 Step -1
+            If TypeOf myForm.Controls(i) Is DataGridView Then
+                myForm.Controls.RemoveAt(i)
+            End If
+        Next
+    End Sub
+
+    Function newDgv As DataGridView
 
         Dim return_dgv As New DataGridView
 
@@ -375,6 +383,6 @@
         Return return_dgv
     End Function
 
-    
+
 
 End Class

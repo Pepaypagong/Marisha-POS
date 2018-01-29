@@ -370,7 +370,24 @@
 
     Public Sub dgv_transactions_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
         MessageBox.Show("Working " + dgv_transactions.Name)
-        
+
     End Sub
 
+    Private Sub cmd_new_Click(sender As Object, e As EventArgs) Handles cmd_new.Click
+
+    End Sub
+
+    Private Sub cmd_view_Click(sender As Object, e As EventArgs) Handles cmd_view.Click
+        'transService.newDgv()
+    End Sub
+
+    Private Sub cmd_delete_Click(sender As Object, e As EventArgs) Handles cmd_delete.Click
+        For i As Integer = Me.Controls.Count - 1 To 0 Step -1
+            If TypeOf Me.Controls(i) Is Datagridview Then
+                Me.Controls.RemoveAt(i)
+            End If
+        Next
+
+        dgv_transactions.Dispose()
+    End Sub
 End Class
