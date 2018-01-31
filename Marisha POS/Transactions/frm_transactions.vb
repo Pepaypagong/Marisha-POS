@@ -379,15 +379,20 @@
 
     Private Sub cmd_view_Click(sender As Object, e As EventArgs) Handles cmd_view.Click
         'transService.newDgv()
+        dgv_transactions.Columns.Clear
     End Sub
 
     Private Sub cmd_delete_Click(sender As Object, e As EventArgs) Handles cmd_delete.Click
-        For i As Integer = Me.Controls.Count - 1 To 0 Step -1
-            If TypeOf Me.Controls(i) Is Datagridview Then
-                Me.Controls.RemoveAt(i)
-            End If
-        Next
+        'For i As Integer = Me.Controls.Count - 1 To 0 Step -1
+        '    If TypeOf Me.Controls(i) Is Datagridview Then
+        '        Me.Controls.RemoveAt(i)
+        '    End If
+        'Next
 
-        dgv_transactions.Dispose()
+        'dgv_transactions.Dispose()
+        
+        transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
+                          dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
+                          cbo_id.SelectedValue, dgv_transactions)
     End Sub
 End Class

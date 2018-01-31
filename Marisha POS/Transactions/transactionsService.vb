@@ -46,7 +46,10 @@
 
             Dim data_table As DataTable = SQL.GlobalFetch(query_string, params)
 
-            generate_grid_columns(dgv, trans_type, data_table)
+            generate_grid_columns(dgv, trans_type)
+
+            dgv.DataSource = data_table
+            
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -54,10 +57,12 @@
 
     End Sub
 
-    Public Sub generate_grid_columns(dgv As DataGridView, trans_type As String, data As DataTable)
+    Public Sub generate_grid_columns(dgv As DataGridView, trans_type As String)
 
-        destroyDatagridview(frm_transactions)
-        dgv = newDgv 'create new datagridview
+        dgv.Columns.Clear
+        dgv.AutoGenerateColumns = False
+        'destroyDatagridview(frm_transactions)
+        'dgv = newDgv 'create new datagridview
 
         Select Case trans_type
 
@@ -316,7 +321,7 @@
 
         End Select
 
-        dgv.DataSource = data
+        'dgv.DataSource = data
 
     End Sub
 
