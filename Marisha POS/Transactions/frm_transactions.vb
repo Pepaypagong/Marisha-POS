@@ -1,6 +1,7 @@
 ﻿Public Class frm_transactions
 
     Dim customers_query As New customers_q
+    Dim suppliers_query As New suppliers_q
     Dim transService As New transactionsService
 
     Public trans_type As String = "cash sales"
@@ -19,13 +20,13 @@
 
         reset_cbo_and_dtp()
 
-        cbo_id.DisplayMember = "Text"
-
         With cbo_sales_type.Items
             .Add("Cash Sales")
             .Add("On-Account Sales")
         End With
         cbo_sales_type.SelectedIndex = 0
+
+        fillIdDropDown()
 
     End Sub
 
@@ -33,22 +34,35 @@
         dtp_purchases_to.Value = DateTime.Now()
         dtp_purchases_from.Value = DateTime.Now.AddMonths(-1)
 
-        cbo_id.Items.Clear()
+        cbo_id.DataSource = Nothing
     End Sub
 
-    Public Sub fillCboCustomers()
+    Public Sub fillIdDropDown()
 
-        cbo_id.Items.Clear()
+        cbo_id.DataSource = Nothing
 
-        With cbo_id.Items
-            .Add(New With {.Text = "-- All Customers --", .Value = 0})
+        Dim valueAndKey As New Dictionary(Of Integer, String)
+        Dim dtRow As New Datatable
 
-            For Each row As DataRow In customers_query.GetCustomers.Rows
-                .Add(New With {.Text = row.Field(Of String)(1), .Value = row.Field(Of Integer)(0)})
+        With valueAndKey
+
+            If trans_type = "customer sales" Then
+                .Add(0,"-- All Customers --")
+                dtRow = customers_query.GetCustomers
+            Else 'if trans_type = "purchase" Or trans_type = "purchase return"
+                .Add(0,"-- All Suppliers --")
+                dtRow = suppliers_query.GetSuppliers
+            End If
+
+            For Each row As DataRow In dtRow.Rows
+                .Add(row.Field(Of Integer)(0),row.Field(Of String)(1))
             Next
 
         End With
-        cbo_id.SelectedIndex = 0
+
+        cbo_id.DataSource = New BindingSource(valueAndKey, vbNullString)
+        cbo_id.DisplayMember = "Value"
+        cbo_id.ValueMember = "Key"
 
     End Sub
 
@@ -58,30 +72,35 @@
         cbo_sales_type.SelectedIndex = 0
         reset_cbo_and_dtp()
         reposition_filter_controls()
+        fillIdDropDown()
     End Sub
     Private Sub cmd_sales_return_Click(sender As Object, e As EventArgs) Handles cmd_sales_return.Click
         lbl_title.Text = "Sales Returns"
         trans_type = "sales return"
         reset_cbo_and_dtp()
         reposition_filter_controls()
+        fillIdDropDown()
     End Sub
     Private Sub cmd_purchases_Click(sender As Object, e As EventArgs) Handles cmd_purchases.Click
         lbl_title.Text = "Purchase Transactions"
         trans_type = "purchase"
         reset_cbo_and_dtp()
         reposition_filter_controls()
+        fillIdDropDown()
     End Sub
     Private Sub cmd_purchase_returns_Click(sender As Object, e As EventArgs) Handles cmd_purchase_returns.Click
         lbl_title.Text = "Purchase Returns"
         trans_type = "purchase return"
         reset_cbo_and_dtp()
         reposition_filter_controls()
+        fillIdDropDown()
     End Sub
     Private Sub cmd_rejects_Click(sender As Object, e As EventArgs) Handles cmd_rejects.Click
         lbl_title.Text = "Rejects"
         trans_type = "reject"
         reset_cbo_and_dtp()
         reposition_filter_controls()
+        fillIdDropDown()
     End Sub
     Private Sub cmd_close_Click(sender As Object, e As EventArgs) Handles cmd_close.Click
         Me.Close()
@@ -91,30 +110,31 @@
         trans_type = IIf(cbo_sales_type.SelectedIndex = 0, "cash sales", "customer sales")
         reposition_filter_controls()
         If cbo_sales_type.SelectedIndex = 1 Then
-            fillCboCustomers()
+            fillIdDropDown()
         End If
 
         transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
                           dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
-                          cbo_id.SelectedValue, dgv_transactions)
+                          (CType(cbo_id.SelectedItem, KeyValuePair(Of Integer, String))).Key, dgv_transactions)
     End Sub
 
     Private Sub cbo_id_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbo_id.SelectedIndexChanged
         transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
                           dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
-                          cbo_id.SelectedValue, dgv_transactions)
+                          (CType(cbo_id.SelectedItem, KeyValuePair(Of Integer, String))).Key, dgv_transactions)
     End Sub
 
     Private Sub dtp_purchases_from_ValueChanged(sender As Object, e As EventArgs) Handles dtp_purchases_from.ValueChanged
         transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
                           dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
-                          cbo_id.SelectedValue, dgv_transactions)
+                          (CType(cbo_id.SelectedItem, KeyValuePair(Of Integer, String))).Key, dgv_transactions)
     End Sub
 
     Private Sub dtp_purchases_to_ValueChanged(sender As Object, e As EventArgs) Handles dtp_purchases_to.ValueChanged
         transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
                           dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
-                          cbo_id.SelectedValue, dgv_transactions)
+                          (CType(cbo_id.SelectedItem, KeyValuePair(Of Integer, String))).Key, dgv_transactions)
+
     End Sub
 
     'SHORCUT KEYS'
@@ -378,21 +398,10 @@
     End Sub
 
     Private Sub cmd_view_Click(sender As Object, e As EventArgs) Handles cmd_view.Click
-        'transService.newDgv()
-        dgv_transactions.Columns.Clear
+        dgv_transactions.Columns.Clear()
     End Sub
 
     Private Sub cmd_delete_Click(sender As Object, e As EventArgs) Handles cmd_delete.Click
-        'For i As Integer = Me.Controls.Count - 1 To 0 Step -1
-        '    If TypeOf Me.Controls(i) Is Datagridview Then
-        '        Me.Controls.RemoveAt(i)
-        '    End If
-        'Next
 
-        'dgv_transactions.Dispose()
-        
-        transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
-                          dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
-                          cbo_id.SelectedValue, dgv_transactions)
     End Sub
 End Class

@@ -55,41 +55,48 @@ Public Class SQLControl
     End Sub
 
     Public Function GlobalInsertUpdate(sql As String, parameters As Dictionary(Of String, Object)) As Integer
+
         Dim rows As Integer = 0
 
-        Using con As SqlConnection = New SqlConnection(sqlConnectionString)
-            con.Open()
-            Dim cmd As SqlCommand = New SqlCommand(sql, con)
-            cmd.CommandType = CommandType.Text
-            For Each key As String In parameters.Keys
-                cmd.Parameters.AddWithValue(key, parameters(key))
-            Next
-
-            rows = cmd.ExecuteNonQuery()
-        End Using
+        Try
+            Using con As SqlConnection = New SqlConnection(sqlConnectionString)
+                con.Open()
+                Dim cmd As SqlCommand = New SqlCommand(sql, con)
+                cmd.CommandType = CommandType.Text
+                For Each key As String In parameters.Keys
+                    cmd.Parameters.AddWithValue(key, parameters(key))
+                Next
+                rows = cmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            MsgBox("Error Found! Please Contact Jeffrey Bacuna!", MsgBoxStyle.Critical)
+        End Try
 
         Return rows
 
     End Function
 
     Public Function GlobalFetch(sql As String, parameters As Dictionary(Of String, Object)) As DataTable
-       Dim rows As DataTable
 
-        Using con As SqlConnection = New SqlConnection(sqlConnectionString)
-            con.Open()
-            Dim cmd As SqlCommand = New SqlCommand(sql, con)
-            cmd.CommandType = CommandType.Text
-            For Each key As String In parameters.Keys
-                cmd.Parameters.AddWithValue(key, parameters(key))
-            Next
+        Dim rows As New DataTable
 
-            Using sda As New SqlDataAdapter(cmd)
-                dim dt As New DataTable
-                sda.Fill(dt) 'fills the datatable with data
-                rows = dt
-            End using
+        Try
+            Using con As SqlConnection = New SqlConnection(sqlConnectionString)
+                con.Open()
+                Dim cmd As SqlCommand = New SqlCommand(sql, con)
+                cmd.CommandType = CommandType.Text
+                For Each key As String In parameters.Keys
+                    cmd.Parameters.AddWithValue(key, parameters(key))
+                Next
 
-        End Using
+                Using sda As New SqlDataAdapter(cmd)
+                    sda.Fill(rows)
+                End Using
+
+            End Using
+        Catch ex As Exception
+            MsgBox("Error Found! Please Contact Jeffrey Bacuna!", MsgBoxStyle.Critical)
+        End Try
 
         Return rows
 

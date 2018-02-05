@@ -6,6 +6,26 @@ Public Class suppliers_q
 
     Dim SQL As New SQLControl
 
+    Public Function GetSuppliers As Datatable
+
+        dim dtatable as new Datatable
+        
+         Try
+            Dim params As New Dictionary(Of String, Object)
+
+            Dim query_string As String = "select supplier_no, supplier_name " &
+                                            "from supplier_table"
+
+           dtatable = SQL.GlobalFetch(query_string,params)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return dtatable
+
+    End Function
+
     'ACCOUNTS MAIN FORM'
 
     Public Sub load_suppliers()

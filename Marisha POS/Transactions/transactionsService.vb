@@ -61,8 +61,6 @@
 
         dgv.Columns.Clear
         dgv.AutoGenerateColumns = False
-        'destroyDatagridview(frm_transactions)
-        'dgv = newDgv 'create new datagridview
 
         Select Case trans_type
 
@@ -223,7 +221,7 @@
                 dgv.Columns(0).Width = 220
                 dgv.Columns(1).Width = 100
                 dgv.Columns(2).Width = 100
-                dgv.Columns(3).Width = 200
+                dgv.Columns(3).Width = 300
                 dgv.Columns(4).Width = 150
                 dgv.Columns(5).Width = 150
                 dgv.Columns(6).Width = 150
