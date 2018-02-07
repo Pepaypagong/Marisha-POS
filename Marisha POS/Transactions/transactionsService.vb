@@ -49,7 +49,6 @@
             generate_grid_columns(dgv, trans_type)
 
             dgv.DataSource = data_table
-            
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -323,69 +322,67 @@
 
     End Sub
 
-    Private Sub destroyDatagridview(myForm As Form)
-        For i As Integer = myForm.Controls.Count - 1 To 0 Step -1
-            If TypeOf myForm.Controls(i) Is DataGridView Then
-                myForm.Controls.RemoveAt(i)
-            End If
-        Next
-    End Sub
+    'Private Sub destroyDatagridview(myForm As Form)
+    '    For i As Integer = myForm.Controls.Count - 1 To 0 Step -1
+    '        If TypeOf myForm.Controls(i) Is DataGridView Then
+    '            myForm.Controls.RemoveAt(i)
+    '        End If
+    '    Next
+    'End Sub
 
-    Function newDgv As DataGridView
+    'Function newDgv As DataGridView
 
-        Dim return_dgv As New DataGridView
+    '    Dim return_dgv As New DataGridView
 
-        With return_dgv
-            .Name = "dgv_transactions"
-            .Size = New Size(1270, 473)
-            .Location = New Point(12, 209)
+    '    With return_dgv
+    '        .Name = "dgv_transactions"
+    '        .Size = New Size(1270, 473)
+    '        .Location = New Point(12, 209)
 
-            'func
-            .AutoGenerateColumns = False
-            .AllowUserToAddRows = False
-            .AllowUserToDeleteRows = False
-            .AllowUserToResizeRows = False
-            .MultiSelect = False
-            .ReadOnly = True
-            .RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
-            .RowHeadersVisible = False
-            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
-            With .RowsDefaultCellStyle
-                .Font = New System.Drawing.Font("Tahoma", 8.25, FontStyle.Bold)
-            End With
+    '        'func
+    '        .AutoGenerateColumns = False
+    '        .AllowUserToAddRows = False
+    '        .AllowUserToDeleteRows = False
+    '        .AllowUserToResizeRows = False
+    '        .MultiSelect = False
+    '        .ReadOnly = True
+    '        .RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+    '        .RowHeadersVisible = False
+    '        .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+    '        With .RowsDefaultCellStyle
+    '            .Font = New System.Drawing.Font("Tahoma", 8.25, FontStyle.Bold)
+    '        End With
 
-            'design
-            .BackgroundColor = Color.WhiteSmoke
-            .GridColor = Color.DarkGray
-            .BorderStyle = BorderStyle.Fixed3D
-            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
-            With .ColumnHeadersDefaultCellStyle
-                .BackColor = Color.DarkSlateGray
-                .ForeColor = Color.White
-                .Font = New System.Drawing.Font("Tahoma", 8.25, FontStyle.Bold)
-                .Alignment = DataGridViewContentAlignment.MiddleLeft
-                .WrapMode = False
-            End With
-            .ColumnHeadersHeight = 25
-            .Cursor = Cursors.Hand
-            With .DefaultCellStyle
-                .BackColor = Color.White
-                .ForeColor = Color.Black
-                .SelectionBackColor = Color.DarkSlateGray
-                .SelectionForeColor = Color.White
-                .Font = New System.Drawing.Font("Tahoma", 8.25, FontStyle.Bold)
-                .Alignment = DataGridViewContentAlignment.MiddleLeft
-                .WrapMode = False
-            End With
-            .EnableHeadersVisualStyles = False
-        End With
+    '        'design
+    '        .BackgroundColor = Color.WhiteSmoke
+    '        .GridColor = Color.DarkGray
+    '        .BorderStyle = BorderStyle.Fixed3D
+    '        .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+    '        With .ColumnHeadersDefaultCellStyle
+    '            .BackColor = Color.DarkSlateGray
+    '            .ForeColor = Color.White
+    '            .Font = New System.Drawing.Font("Tahoma", 8.25, FontStyle.Bold)
+    '            .Alignment = DataGridViewContentAlignment.MiddleLeft
+    '            .WrapMode = False
+    '        End With
+    '        .ColumnHeadersHeight = 25
+    '        .Cursor = Cursors.Hand
+    '        With .DefaultCellStyle
+    '            .BackColor = Color.White
+    '            .ForeColor = Color.Black
+    '            .SelectionBackColor = Color.DarkSlateGray
+    '            .SelectionForeColor = Color.White
+    '            .Font = New System.Drawing.Font("Tahoma", 8.25, FontStyle.Bold)
+    '            .Alignment = DataGridViewContentAlignment.MiddleLeft
+    '            .WrapMode = False
+    '        End With
+    '        .EnableHeadersVisualStyles = False
+    '    End With
 
-        AddHandler return_dgv.CellContentClick, AddressOf frm_transactions.dgv_transactions_CellContentClick
-        frm_transactions.Controls.Add(return_dgv)
+    '    AddHandler return_dgv.CellContentClick, AddressOf frm_transactions.dgv_transactions_CellContentClick
+    '    frm_transactions.Controls.Add(return_dgv)
 
-        Return return_dgv
-    End Function
-
-
+    '    Return return_dgv
+    'End Function
 
 End Class

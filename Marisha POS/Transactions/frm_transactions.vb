@@ -1,10 +1,12 @@
 ﻿Public Class frm_transactions
 
+    'trans type = [cash sales, customer sales, purchase, purchase return, reject]
     Dim customers_query As New customers_q
     Dim suppliers_query As New suppliers_q
     Dim transService As New transactionsService
 
     Public trans_type As String = "cash sales"
+    Public selectedTransId As Integer = 0
 
     Private Sub me_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         Me.Dispose()
@@ -42,20 +44,20 @@
         cbo_id.DataSource = Nothing
 
         Dim valueAndKey As New Dictionary(Of Integer, String)
-        Dim dtRow As New Datatable
+        Dim dtRow As New DataTable
 
         With valueAndKey
 
             If trans_type = "customer sales" Then
-                .Add(0,"-- All Customers --")
+                .Add(0, "-- All Customers --")
                 dtRow = customers_query.GetCustomers
             Else 'if trans_type = "purchase" Or trans_type = "purchase return"
-                .Add(0,"-- All Suppliers --")
+                .Add(0, "-- All Suppliers --")
                 dtRow = suppliers_query.GetSuppliers
             End If
 
             For Each row As DataRow In dtRow.Rows
-                .Add(row.Field(Of Integer)(0),row.Field(Of String)(1))
+                .Add(row.Field(Of Integer)(0), row.Field(Of String)(1))
             Next
 
         End With
@@ -73,6 +75,7 @@
         reset_cbo_and_dtp()
         reposition_filter_controls()
         fillIdDropDown()
+        selectedTransId = 0
     End Sub
     Private Sub cmd_sales_return_Click(sender As Object, e As EventArgs) Handles cmd_sales_return.Click
         lbl_title.Text = "Sales Returns"
@@ -80,6 +83,7 @@
         reset_cbo_and_dtp()
         reposition_filter_controls()
         fillIdDropDown()
+        selectedTransId = 0
     End Sub
     Private Sub cmd_purchases_Click(sender As Object, e As EventArgs) Handles cmd_purchases.Click
         lbl_title.Text = "Purchase Transactions"
@@ -87,6 +91,7 @@
         reset_cbo_and_dtp()
         reposition_filter_controls()
         fillIdDropDown()
+        selectedTransId = 0
     End Sub
     Private Sub cmd_purchase_returns_Click(sender As Object, e As EventArgs) Handles cmd_purchase_returns.Click
         lbl_title.Text = "Purchase Returns"
@@ -94,6 +99,7 @@
         reset_cbo_and_dtp()
         reposition_filter_controls()
         fillIdDropDown()
+        selectedTransId = 0
     End Sub
     Private Sub cmd_rejects_Click(sender As Object, e As EventArgs) Handles cmd_rejects.Click
         lbl_title.Text = "Rejects"
@@ -101,6 +107,7 @@
         reset_cbo_and_dtp()
         reposition_filter_controls()
         fillIdDropDown()
+        selectedTransId = 0
     End Sub
     Private Sub cmd_close_Click(sender As Object, e As EventArgs) Handles cmd_close.Click
         Me.Close()
@@ -116,31 +123,67 @@
         transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
                           dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
                           (CType(cbo_id.SelectedItem, KeyValuePair(Of Integer, String))).Key, dgv_transactions)
+        selectedTransId = 0
     End Sub
 
     Private Sub cbo_id_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbo_id.SelectedIndexChanged
         transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
                           dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
                           (CType(cbo_id.SelectedItem, KeyValuePair(Of Integer, String))).Key, dgv_transactions)
+        selectedTransId = 0
     End Sub
 
     Private Sub dtp_purchases_from_ValueChanged(sender As Object, e As EventArgs) Handles dtp_purchases_from.ValueChanged
         transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
                           dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
                           (CType(cbo_id.SelectedItem, KeyValuePair(Of Integer, String))).Key, dgv_transactions)
+        selectedTransId = 0
     End Sub
 
     Private Sub dtp_purchases_to_ValueChanged(sender As Object, e As EventArgs) Handles dtp_purchases_to.ValueChanged
         transService.FillDgvSales(trans_type, dtp_purchases_from.Value.ToString("yyyy/MM/dd"),
                           dtp_purchases_to.Value.ToString("yyyy/MM/dd"),
                           (CType(cbo_id.SelectedItem, KeyValuePair(Of Integer, String))).Key, dgv_transactions)
-
+        selectedTransId = 0
     End Sub
 
     'SHORCUT KEYS'
     Private Sub shortcut_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.Escape Then
             cmd_close.PerformClick()
+        End If
+    End Sub
+
+    'id's are positioned 1 
+    Private Sub dgv_transactions_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_transactions.CellClick
+        If dgv_transactions.Rows.Count > 0 Then
+            selectedTransId = dgv_transactions.Item((1), dgv_transactions.CurrentRow.Index).Value()
+        End If
+    End Sub
+
+    Private Sub cmd_new_Click(sender As Object, e As EventArgs) Handles cmd_new.Click
+        frm_transaction_items.mTransactionTypeItem = "new " + trans_type 'set trans type of details
+        frm_transaction_items.mode = "new"
+        frm_transaction_items.ShowDialog()
+    End Sub
+
+    Private Sub cmd_view_Click(sender As Object, e As EventArgs) Handles cmd_view.Click
+        If selectedTransId = 0 Then
+            MsgBox(" Please Select a Record! ", MsgBoxStyle.Exclamation, "")
+        Else
+            frm_transaction_items.mTransactionTypeItem = trans_type 'set trans type of details
+            frm_transaction_items.mode = "view"
+            frm_transaction_items.ShowDialog()
+        End If
+    End Sub
+
+    Private Sub cmd_delete_Click(sender As Object, e As EventArgs) Handles cmd_delete.Click
+        If selectedTransId = 0 Then
+            MsgBox(" Please Select a Record! ", MsgBoxStyle.Exclamation, "")
+        Else
+            frm_transaction_items.mTransactionTypeItem = "del " + trans_type 'set trans type of details
+            frm_transaction_items.mode = "delete"
+            frm_transaction_items.ShowDialog()
         End If
     End Sub
 
@@ -388,20 +431,5 @@
         End Select
     End Sub
 
-    Public Sub dgv_transactions_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-        MessageBox.Show("Working " + dgv_transactions.Name)
 
-    End Sub
-
-    Private Sub cmd_new_Click(sender As Object, e As EventArgs) Handles cmd_new.Click
-
-    End Sub
-
-    Private Sub cmd_view_Click(sender As Object, e As EventArgs) Handles cmd_view.Click
-        dgv_transactions.Columns.Clear()
-    End Sub
-
-    Private Sub cmd_delete_Click(sender As Object, e As EventArgs) Handles cmd_delete.Click
-
-    End Sub
 End Class

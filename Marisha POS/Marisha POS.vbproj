@@ -615,6 +615,13 @@
     <Compile Include="Transactions\frm_transactions.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Transactions\frm_transaction_items.Designer.vb">
+      <DependentUpon>frm_transaction_items.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\frm_transaction_items.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\transactionItemService.vb" />
     <Compile Include="Transactions\transactionsService.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -849,6 +856,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\frm_transactions.resx">
       <DependentUpon>frm_transactions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\frm_transaction_items.resx">
+      <DependentUpon>frm_transaction_items.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

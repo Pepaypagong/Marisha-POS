@@ -175,4 +175,7 @@
         Me.dgv_purchase_list.Rows.Clear()
     End Sub
 
+    Private Sub cmd_cancel_Click(sender As Object, e As EventArgs) Handles cmd_cancel.Click
+
+    End Sub
 End Class
