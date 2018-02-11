@@ -5,6 +5,7 @@
 
     Private SQL As New SQLControl
     Private transItemService As New transactionItemService
+    Private transService As New transactionsService
     Public mTransactionTypeItem As String = "cash trans"
     Public mode As String = "view"
 
@@ -17,20 +18,56 @@
         lbl_title.Text = GetTitle()
         SetControls()
 
-        If mode = "view"
-            transItemService.GetViewData(mTransactionTypeItem,frm_transactions.selectedTransId)
-            transItemService.GetItems(mTransactionTypeItem,frm_transactions.selectedTransId)
+        If mode = "view" Or mode = "delete" Then
+            transItemService.GetViewData(mTransactionTypeItem, frm_transactions.selectedTransId)
+            transItemService.GetItems(mTransactionTypeItem, frm_transactions.selectedTransId)
         End If
-        
+
     End Sub
 
     Private Sub dgv_items_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_items.CellContentClick
 
     End Sub
 
-    Private Sub cmd_view_Click(sender As Object, e As EventArgs) Handles cmd_save.Click
+    Private Sub cmd_save_Click(sender As Object, e As EventArgs) Handles cmd_save.Click
+        If mode = "new" Then
 
+        ElseIf mode = "delete" Then
+            transItemService.DeleteHeader(frm_transactions.selectedTransId, mTransactionTypeItem)
+            transItemService.DeleteItems(frm_transactions.selectedTransId, mTransactionTypeItem)
+            Me.Close()
+            MsgBox(refresh_grid(mTransactionTypeItem), MsgBoxStyle.Information)
+        End If
     End Sub
+
+    Private Function refresh_grid(refresh_trans_type As String) As String
+        Dim message = " transaction successfully deleted!"
+
+        Select Case refresh_trans_type
+
+            Case "del cash sales"
+                message = "Cash sales" + message
+                frm_transactions.cmd_sales.PerformClick()
+            Case "del customer sales"
+                message = "Customer sales" + message
+                frm_transactions.cmd_sales.PerformClick()
+                frm_transactions.cbo_sales_type.SelectedIndex = 1
+            Case "del sales return"
+                message = "Sales return" + message
+                frm_transactions.cmd_sales_return.PerformClick()
+            Case "del purchase"
+                message = "Purchase" + message
+                frm_transactions.cmd_purchases.PerformClick()
+            Case "del purchase return"
+                message = "Purchase return" + message
+                frm_transactions.cmd_purchase_returns.PerformClick()
+            Case "del reject"
+                message = "Reject" + message
+                frm_transactions.cmd_rejects.PerformClick()
+        End Select
+
+        Return message
+    End Function
 
     Private Sub cmd_cancel_Click(sender As Object, e As EventArgs) Handles cmd_cancel.Click
         Me.Close()
@@ -43,12 +80,17 @@
     End Sub
 
     Public Sub DisableControls()
-        For Each ctl As Control In Controls
-            ctl.Enabled = False
-        Next
-        cmd_cancel.Enabled = True
-        cmd_save.Enabled = True
-        lbl_title.Enabled = True
+        'For Each ctl As Control In Controls
+        '    ctl.Enabled = False
+        'Next
+        txt_ref_no.Enabled = False
+        dtp_date.Enabled = False
+        txt_remarks.Enabled = False
+
+        txt_barcode.Enabled = False
+
+        cmd_add_item.Visible = False
+        cmd_remove_item.Visible = False
     End Sub
     Public Sub SetControls()
         If mode = "view" Then

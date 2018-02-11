@@ -9,6 +9,8 @@ Public Class SQLControl
     Public SQLDS As DataSet
     Public SQLDR As SqlDataReader
 
+    Public GlobalErrorMessage As String = "Error detected! Please contact Jeffrey Bacuna."
+
     Public Function HasConnection() As Boolean
         Try
             SQLCon.Open()
@@ -54,7 +56,7 @@ Public Class SQLControl
         End Try
     End Sub
 
-    Public Function GlobalInsertUpdate(sql As String, parameters As Dictionary(Of String, Object)) As Integer
+    Public Function GlobalInsertUpdateDelete(sql As String, parameters As Dictionary(Of String, Object)) As Integer
 
         Dim rows As Integer = 0
 
@@ -69,7 +71,7 @@ Public Class SQLControl
                 rows = cmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
-            MsgBox("Error Found! Please Contact Jeffrey Bacuna!", MsgBoxStyle.Critical)
+            MsgBox(GlobalErrorMessage, MsgBoxStyle.Critical)
         End Try
 
         Return rows
@@ -95,7 +97,7 @@ Public Class SQLControl
 
             End Using
         Catch ex As Exception
-            MsgBox("Error Found! Please Contact Jeffrey Bacuna!", MsgBoxStyle.Critical)
+            MsgBox(GlobalErrorMessage, MsgBoxStyle.Critical)
         End Try
 
         Return rows

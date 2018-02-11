@@ -115,7 +115,7 @@ Public Class suppliers_q
             Dim insert_supplier As String = "INSERT INTO supplier_table(supplier_no,supplier_name,contact_no,address)VALUES " &
             "(@supplier_no,@supplier_name,@contact_no,@address)"
 
-            SQL.GlobalInsertUpdate(insert_supplier,params)
+            SQL.GlobalInsertUpdateDelete(insert_supplier,params)
 
             MsgBox(" Supplier Successfully Added!", MsgBoxStyle.Information, " Supplier Record Created")
         Catch ex As Exception

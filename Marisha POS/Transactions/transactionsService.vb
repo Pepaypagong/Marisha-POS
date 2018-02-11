@@ -56,9 +56,10 @@
 
     End Sub
 
+#Region "Generate Grid"
     Public Sub generate_grid_columns(dgv As DataGridView, trans_type As String)
 
-        dgv.Columns.Clear
+        dgv.Columns.Clear()
         dgv.AutoGenerateColumns = False
 
         Select Case trans_type
@@ -384,5 +385,7 @@
 
     '    Return return_dgv
     'End Function
+#End Region
+
 
 End Class

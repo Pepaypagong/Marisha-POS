@@ -22,7 +22,7 @@ Public Class ItemFlowService
                 "(item_no,date,trans_type,item_in,item_out,is_initial_entry,buying_price)VALUES " & 
                 "(@item_no,@date,@trans_type,@item_in,@item_out,@is_initial_entry,@buying_price)"
 
-            SQL.GlobalInsertUpdate(query,params)
+            SQL.GlobalInsertUpdateDelete(query,params)
 
         Catch ex As Exception
             MsgBox(ex.Message)

@@ -22,10 +22,10 @@ Partial Class frm_transaction_items
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txt_ref_no = New System.Windows.Forms.TextBox()
         Me.dtp_date = New System.Windows.Forms.DateTimePicker()
         Me.lbl_trans_no = New System.Windows.Forms.Label()
@@ -90,6 +90,7 @@ Partial Class frm_transaction_items
         Me.lbl_trans_no.Name = "lbl_trans_no"
         Me.lbl_trans_no.Size = New System.Drawing.Size(167, 22)
         Me.lbl_trans_no.TabIndex = 38
+        Me.lbl_trans_no.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label16
         '
@@ -124,6 +125,7 @@ Partial Class frm_transaction_items
         Me.lbl_supplier_name.Name = "lbl_supplier_name"
         Me.lbl_supplier_name.Size = New System.Drawing.Size(394, 22)
         Me.lbl_supplier_name.TabIndex = 36
+        Me.lbl_supplier_name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lbl_supplier
         '
@@ -262,31 +264,31 @@ Partial Class frm_transaction_items
         Me.dgv_items.AllowUserToAddRows = false
         Me.dgv_items.AllowUserToDeleteRows = false
         Me.dgv_items.AllowUserToResizeRows = false
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.dgv_items.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.dgv_items.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
         Me.dgv_items.BackgroundColor = System.Drawing.Color.WhiteSmoke
         Me.dgv_items.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.dgv_items.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dgv_items.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_items.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_items.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.dgv_items.ColumnHeadersHeight = 25
         Me.dgv_items.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.item_no, Me.barcode, Me.item_name, Me.qty, Me.unit, Me.price, Me.discount, Me.total_amount})
         Me.dgv_items.Cursor = System.Windows.Forms.Cursors.Hand
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_items.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.HotTrack
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_items.DefaultCellStyle = DataGridViewCellStyle15
         Me.dgv_items.EnableHeadersVisualStyles = false
         Me.dgv_items.GridColor = System.Drawing.Color.White
         Me.dgv_items.Location = New System.Drawing.Point(10, 244)
@@ -295,8 +297,8 @@ Partial Class frm_transaction_items
         Me.dgv_items.ReadOnly = true
         Me.dgv_items.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dgv_items.RowHeadersVisible = false
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.dgv_items.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.dgv_items.RowsDefaultCellStyle = DataGridViewCellStyle16
         Me.dgv_items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgv_items.Size = New System.Drawing.Size(1274, 339)
         Me.dgv_items.TabIndex = 83
@@ -357,12 +359,13 @@ Partial Class frm_transaction_items
         '
         Me.lbl_total_discount.BackColor = System.Drawing.Color.White
         Me.lbl_total_discount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lbl_total_discount.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_total_discount.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbl_total_discount.Location = New System.Drawing.Point(1026, 622)
         Me.lbl_total_discount.Name = "lbl_total_discount"
         Me.lbl_total_discount.Size = New System.Drawing.Size(256, 22)
         Me.lbl_total_discount.TabIndex = 89
         Me.lbl_total_discount.Text = " "
+        Me.lbl_total_discount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label27
         '
@@ -379,13 +382,14 @@ Partial Class frm_transaction_items
         '
         Me.lbl_sub_total_grand.BackColor = System.Drawing.Color.White
         Me.lbl_sub_total_grand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lbl_sub_total_grand.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_sub_total_grand.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbl_sub_total_grand.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lbl_sub_total_grand.Location = New System.Drawing.Point(1026, 596)
         Me.lbl_sub_total_grand.Name = "lbl_sub_total_grand"
         Me.lbl_sub_total_grand.Size = New System.Drawing.Size(256, 22)
         Me.lbl_sub_total_grand.TabIndex = 87
         Me.lbl_sub_total_grand.Text = " "
+        Me.lbl_sub_total_grand.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label25
         '
@@ -402,12 +406,13 @@ Partial Class frm_transaction_items
         '
         Me.lbl_grand_total.BackColor = System.Drawing.Color.White
         Me.lbl_grand_total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lbl_grand_total.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_grand_total.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbl_grand_total.Location = New System.Drawing.Point(1026, 647)
         Me.lbl_grand_total.Name = "lbl_grand_total"
         Me.lbl_grand_total.Size = New System.Drawing.Size(256, 22)
         Me.lbl_grand_total.TabIndex = 85
         Me.lbl_grand_total.Text = " "
+        Me.lbl_grand_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label6
         '
