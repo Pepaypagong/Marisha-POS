@@ -22,10 +22,10 @@ Partial Class frm_transaction_items
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txt_ref_no = New System.Windows.Forms.TextBox()
         Me.dtp_date = New System.Windows.Forms.DateTimePicker()
         Me.lbl_trans_no = New System.Windows.Forms.Label()
@@ -44,22 +44,25 @@ Partial Class frm_transaction_items
         Me.txt_barcode = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.dgv_items = New System.Windows.Forms.DataGridView()
-        Me.item_no = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.barcode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.item_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.unit = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.discount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.total_amount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.sub_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lbl_total_discount = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.lbl_sub_total_grand = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
+        Me.lbl_total_discount_label = New System.Windows.Forms.Label()
+        Me.lbl_sub_total = New System.Windows.Forms.Label()
+        Me.lbl_sub_total_label = New System.Windows.Forms.Label()
         Me.lbl_grand_total = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lbl_grand_total_label = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txt_remarks = New System.Windows.Forms.TextBox()
+        Me.cmd_change_qty = New System.Windows.Forms.Button()
+        Me.lbl_barcode_status = New System.Windows.Forms.Label()
+        Me.cmd_apply_disc = New System.Windows.Forms.Button()
         CType(Me.dgv_items,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -70,7 +73,7 @@ Partial Class frm_transaction_items
         Me.txt_ref_no.MaxLength = 50
         Me.txt_ref_no.Name = "txt_ref_no"
         Me.txt_ref_no.Size = New System.Drawing.Size(258, 22)
-        Me.txt_ref_no.TabIndex = 34
+        Me.txt_ref_no.TabIndex = 1
         '
         'dtp_date
         '
@@ -79,7 +82,7 @@ Partial Class frm_transaction_items
         Me.dtp_date.Location = New System.Drawing.Point(144, 148)
         Me.dtp_date.Name = "dtp_date"
         Me.dtp_date.Size = New System.Drawing.Size(180, 22)
-        Me.dtp_date.TabIndex = 32
+        Me.dtp_date.TabIndex = 2
         '
         'lbl_trans_no
         '
@@ -112,7 +115,7 @@ Partial Class frm_transaction_items
         Me.cmd_select_supplier.Location = New System.Drawing.Point(544, 84)
         Me.cmd_select_supplier.Name = "cmd_select_supplier"
         Me.cmd_select_supplier.Size = New System.Drawing.Size(69, 24)
-        Me.cmd_select_supplier.TabIndex = 33
+        Me.cmd_select_supplier.TabIndex = 0
         Me.cmd_select_supplier.Text = "Select"
         Me.cmd_select_supplier.UseVisualStyleBackColor = false
         '
@@ -210,7 +213,7 @@ Partial Class frm_transaction_items
         Me.cmd_remove_item.Location = New System.Drawing.Point(1168, 211)
         Me.cmd_remove_item.Name = "cmd_remove_item"
         Me.cmd_remove_item.Size = New System.Drawing.Size(114, 27)
-        Me.cmd_remove_item.TabIndex = 78
+        Me.cmd_remove_item.TabIndex = 7
         Me.cmd_remove_item.Text = "REMOVE ITEM"
         Me.cmd_remove_item.UseVisualStyleBackColor = false
         '
@@ -223,7 +226,7 @@ Partial Class frm_transaction_items
         Me.cmd_add_item.Location = New System.Drawing.Point(1048, 211)
         Me.cmd_add_item.Name = "cmd_add_item"
         Me.cmd_add_item.Size = New System.Drawing.Size(114, 27)
-        Me.cmd_add_item.TabIndex = 77
+        Me.cmd_add_item.TabIndex = 6
         Me.cmd_add_item.Text = "ADD ITEM"
         Me.cmd_add_item.UseVisualStyleBackColor = false
         '
@@ -245,7 +248,7 @@ Partial Class frm_transaction_items
         Me.txt_barcode.MaxLength = 50
         Me.txt_barcode.Name = "txt_barcode"
         Me.txt_barcode.Size = New System.Drawing.Size(247, 23)
-        Me.txt_barcode.TabIndex = 81
+        Me.txt_barcode.TabIndex = 4
         '
         'Label22
         '
@@ -264,31 +267,31 @@ Partial Class frm_transaction_items
         Me.dgv_items.AllowUserToAddRows = false
         Me.dgv_items.AllowUserToDeleteRows = false
         Me.dgv_items.AllowUserToResizeRows = false
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.dgv_items.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.dgv_items.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgv_items.BackgroundColor = System.Drawing.Color.WhiteSmoke
         Me.dgv_items.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.dgv_items.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dgv_items.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_items.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_items.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgv_items.ColumnHeadersHeight = 25
-        Me.dgv_items.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.item_no, Me.barcode, Me.item_name, Me.qty, Me.unit, Me.price, Me.discount, Me.total_amount})
+        Me.dgv_items.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id, Me.barcode, Me.item_name, Me.qty, Me.unit, Me.price, Me.discount, Me.sub_total})
         Me.dgv_items.Cursor = System.Windows.Forms.Cursors.Hand
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.HotTrack
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgv_items.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgv_items.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgv_items.EnableHeadersVisualStyles = false
         Me.dgv_items.GridColor = System.Drawing.Color.White
         Me.dgv_items.Location = New System.Drawing.Point(10, 244)
@@ -297,31 +300,32 @@ Partial Class frm_transaction_items
         Me.dgv_items.ReadOnly = true
         Me.dgv_items.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dgv_items.RowHeadersVisible = false
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.dgv_items.RowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.dgv_items.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgv_items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgv_items.Size = New System.Drawing.Size(1274, 339)
         Me.dgv_items.TabIndex = 83
         '
-        'item_no
+        'id
         '
-        Me.item_no.HeaderText = "Item No."
-        Me.item_no.Name = "item_no"
-        Me.item_no.ReadOnly = true
+        Me.id.HeaderText = "id"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = true
+        Me.id.Visible = false
         '
         'barcode
         '
         Me.barcode.HeaderText = "Barcode"
         Me.barcode.Name = "barcode"
         Me.barcode.ReadOnly = true
-        Me.barcode.Width = 150
+        Me.barcode.Width = 200
         '
         'item_name
         '
         Me.item_name.HeaderText = "Item Description"
         Me.item_name.Name = "item_name"
         Me.item_name.ReadOnly = true
-        Me.item_name.Width = 300
+        Me.item_name.Width = 400
         '
         'qty
         '
@@ -348,12 +352,12 @@ Partial Class frm_transaction_items
         Me.discount.ReadOnly = true
         Me.discount.Width = 150
         '
-        'total_amount
+        'sub_total
         '
-        Me.total_amount.HeaderText = "Total Amount"
-        Me.total_amount.Name = "total_amount"
-        Me.total_amount.ReadOnly = true
-        Me.total_amount.Width = 150
+        Me.sub_total.HeaderText = "Total Amount"
+        Me.sub_total.Name = "sub_total"
+        Me.sub_total.ReadOnly = true
+        Me.sub_total.Width = 150
         '
         'lbl_total_discount
         '
@@ -367,63 +371,63 @@ Partial Class frm_transaction_items
         Me.lbl_total_discount.Text = " "
         Me.lbl_total_discount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label27
+        'lbl_total_discount_label
         '
-        Me.Label27.AutoSize = true
-        Me.Label27.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Label27.ForeColor = System.Drawing.Color.DimGray
-        Me.Label27.Location = New System.Drawing.Point(912, 623)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(109, 16)
-        Me.Label27.TabIndex = 88
-        Me.Label27.Text = "Total Discount :"
+        Me.lbl_total_discount_label.AutoSize = true
+        Me.lbl_total_discount_label.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_total_discount_label.ForeColor = System.Drawing.Color.DimGray
+        Me.lbl_total_discount_label.Location = New System.Drawing.Point(912, 623)
+        Me.lbl_total_discount_label.Name = "lbl_total_discount_label"
+        Me.lbl_total_discount_label.Size = New System.Drawing.Size(109, 16)
+        Me.lbl_total_discount_label.TabIndex = 88
+        Me.lbl_total_discount_label.Text = "Total Discount :"
         '
-        'lbl_sub_total_grand
+        'lbl_sub_total
         '
-        Me.lbl_sub_total_grand.BackColor = System.Drawing.Color.White
-        Me.lbl_sub_total_grand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lbl_sub_total_grand.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.lbl_sub_total_grand.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lbl_sub_total_grand.Location = New System.Drawing.Point(1026, 596)
-        Me.lbl_sub_total_grand.Name = "lbl_sub_total_grand"
-        Me.lbl_sub_total_grand.Size = New System.Drawing.Size(256, 22)
-        Me.lbl_sub_total_grand.TabIndex = 87
-        Me.lbl_sub_total_grand.Text = " "
-        Me.lbl_sub_total_grand.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_sub_total.BackColor = System.Drawing.Color.White
+        Me.lbl_sub_total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbl_sub_total.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_sub_total.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbl_sub_total.Location = New System.Drawing.Point(1026, 596)
+        Me.lbl_sub_total.Name = "lbl_sub_total"
+        Me.lbl_sub_total.Size = New System.Drawing.Size(256, 22)
+        Me.lbl_sub_total.TabIndex = 87
+        Me.lbl_sub_total.Text = " "
+        Me.lbl_sub_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label25
+        'lbl_sub_total_label
         '
-        Me.Label25.AutoSize = true
-        Me.Label25.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Label25.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label25.Location = New System.Drawing.Point(943, 600)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(77, 16)
-        Me.Label25.TabIndex = 86
-        Me.Label25.Text = "Sub Total :"
+        Me.lbl_sub_total_label.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_sub_total_label.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.lbl_sub_total_label.Location = New System.Drawing.Point(867, 600)
+        Me.lbl_sub_total_label.Name = "lbl_sub_total_label"
+        Me.lbl_sub_total_label.Size = New System.Drawing.Size(154, 16)
+        Me.lbl_sub_total_label.TabIndex = 86
+        Me.lbl_sub_total_label.Text = "Sub Total :"
+        Me.lbl_sub_total_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lbl_grand_total
         '
         Me.lbl_grand_total.BackColor = System.Drawing.Color.White
         Me.lbl_grand_total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lbl_grand_total.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.lbl_grand_total.Location = New System.Drawing.Point(1026, 647)
+        Me.lbl_grand_total.Location = New System.Drawing.Point(1026, 648)
         Me.lbl_grand_total.Name = "lbl_grand_total"
         Me.lbl_grand_total.Size = New System.Drawing.Size(256, 22)
         Me.lbl_grand_total.TabIndex = 85
         Me.lbl_grand_total.Text = " "
         Me.lbl_grand_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label6
+        'lbl_grand_total_label
         '
-        Me.Label6.AutoSize = true
-        Me.Label6.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.DimGray
-        Me.Label6.Location = New System.Drawing.Point(928, 648)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(91, 16)
-        Me.Label6.TabIndex = 84
-        Me.Label6.Text = "Grand Total :"
+        Me.lbl_grand_total_label.AutoSize = true
+        Me.lbl_grand_total_label.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_grand_total_label.ForeColor = System.Drawing.Color.DimGray
+        Me.lbl_grand_total_label.Location = New System.Drawing.Point(931, 649)
+        Me.lbl_grand_total_label.Name = "lbl_grand_total_label"
+        Me.lbl_grand_total_label.Size = New System.Drawing.Size(91, 16)
+        Me.lbl_grand_total_label.TabIndex = 84
+        Me.lbl_grand_total_label.Text = "Grand Total :"
         '
         'Label5
         '
@@ -444,7 +448,44 @@ Partial Class frm_transaction_items
         Me.txt_remarks.Multiline = true
         Me.txt_remarks.Name = "txt_remarks"
         Me.txt_remarks.Size = New System.Drawing.Size(553, 115)
-        Me.txt_remarks.TabIndex = 91
+        Me.txt_remarks.TabIndex = 3
+        '
+        'cmd_change_qty
+        '
+        Me.cmd_change_qty.BackColor = System.Drawing.Color.White
+        Me.cmd_change_qty.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmd_change_qty.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmd_change_qty.ForeColor = System.Drawing.Color.Black
+        Me.cmd_change_qty.Location = New System.Drawing.Point(928, 211)
+        Me.cmd_change_qty.Name = "cmd_change_qty"
+        Me.cmd_change_qty.Size = New System.Drawing.Size(114, 27)
+        Me.cmd_change_qty.TabIndex = 5
+        Me.cmd_change_qty.Text = "CHANGE QTY."
+        Me.cmd_change_qty.UseVisualStyleBackColor = false
+        '
+        'lbl_barcode_status
+        '
+        Me.lbl_barcode_status.AutoSize = true
+        Me.lbl_barcode_status.Font = New System.Drawing.Font("Tahoma", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_barcode_status.ForeColor = System.Drawing.Color.DimGray
+        Me.lbl_barcode_status.Location = New System.Drawing.Point(434, 216)
+        Me.lbl_barcode_status.Name = "lbl_barcode_status"
+        Me.lbl_barcode_status.Size = New System.Drawing.Size(14, 19)
+        Me.lbl_barcode_status.TabIndex = 91
+        Me.lbl_barcode_status.Text = "."
+        '
+        'cmd_apply_disc
+        '
+        Me.cmd_apply_disc.BackColor = System.Drawing.Color.White
+        Me.cmd_apply_disc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmd_apply_disc.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmd_apply_disc.ForeColor = System.Drawing.Color.Black
+        Me.cmd_apply_disc.Location = New System.Drawing.Point(775, 211)
+        Me.cmd_apply_disc.Name = "cmd_apply_disc"
+        Me.cmd_apply_disc.Size = New System.Drawing.Size(147, 27)
+        Me.cmd_apply_disc.TabIndex = 92
+        Me.cmd_apply_disc.Text = "APPLY DISCOUNT"
+        Me.cmd_apply_disc.UseVisualStyleBackColor = false
         '
         'frm_transaction_items
         '
@@ -452,14 +493,17 @@ Partial Class frm_transaction_items
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1294, 694)
+        Me.Controls.Add(Me.cmd_apply_disc)
+        Me.Controls.Add(Me.lbl_barcode_status)
+        Me.Controls.Add(Me.cmd_change_qty)
         Me.Controls.Add(Me.txt_remarks)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.lbl_total_discount)
-        Me.Controls.Add(Me.Label27)
-        Me.Controls.Add(Me.lbl_sub_total_grand)
-        Me.Controls.Add(Me.Label25)
+        Me.Controls.Add(Me.lbl_total_discount_label)
+        Me.Controls.Add(Me.lbl_sub_total)
+        Me.Controls.Add(Me.lbl_sub_total_label)
         Me.Controls.Add(Me.lbl_grand_total)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.lbl_grand_total_label)
         Me.Controls.Add(Me.dgv_items)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.txt_barcode)
@@ -510,20 +554,23 @@ End Sub
     Friend WithEvents txt_barcode As TextBox
     Friend WithEvents Label22 As Label
     Friend WithEvents dgv_items As DataGridView
-    Friend WithEvents item_no As DataGridViewTextBoxColumn
+    Friend WithEvents lbl_total_discount As Label
+    Friend WithEvents lbl_total_discount_label As Label
+    Friend WithEvents lbl_sub_total As Label
+    Friend WithEvents lbl_sub_total_label As Label
+    Friend WithEvents lbl_grand_total As Label
+    Friend WithEvents lbl_grand_total_label As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txt_remarks As TextBox
+    Friend WithEvents id As DataGridViewTextBoxColumn
     Friend WithEvents barcode As DataGridViewTextBoxColumn
     Friend WithEvents item_name As DataGridViewTextBoxColumn
     Friend WithEvents qty As DataGridViewTextBoxColumn
     Friend WithEvents unit As DataGridViewTextBoxColumn
     Friend WithEvents price As DataGridViewTextBoxColumn
     Friend WithEvents discount As DataGridViewTextBoxColumn
-    Friend WithEvents total_amount As DataGridViewTextBoxColumn
-    Friend WithEvents lbl_total_discount As Label
-    Friend WithEvents Label27 As Label
-    Friend WithEvents lbl_sub_total_grand As Label
-    Friend WithEvents Label25 As Label
-    Friend WithEvents lbl_grand_total As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents txt_remarks As TextBox
+    Friend WithEvents sub_total As DataGridViewTextBoxColumn
+    Friend WithEvents cmd_change_qty As Button
+    Friend WithEvents lbl_barcode_status As Label
+    Friend WithEvents cmd_apply_disc As Button
 End Class

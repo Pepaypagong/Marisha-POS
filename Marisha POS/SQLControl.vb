@@ -9,7 +9,7 @@ Public Class SQLControl
     Public SQLDS As DataSet
     Public SQLDR As SqlDataReader
 
-    Public GlobalErrorMessage As String = "Error detected! Please contact Jeffrey Bacuna."
+    Public GlobalErrorMessage As String = "Error detected! Please contact Jeffrey Bacuña."
 
     Public Function HasConnection() As Boolean
         Try
@@ -104,4 +104,31 @@ Public Class SQLControl
 
     End Function
 
+    Public Function GlobalIsExisting(sql As String, parameters As Dictionary(Of String, Object)) As Boolean
+        Dim result As Boolean = False
+
+        Try
+            Using con As SqlConnection = New SqlConnection(sqlConnectionString)
+                con.Open()
+                Dim cmd As SqlCommand = New SqlCommand(sql, con)
+                cmd.CommandType = CommandType.Text
+                For Each key As String In parameters.Keys
+                    cmd.Parameters.AddWithValue(key, parameters(key))
+                Next
+
+                Using reader As SqlDataReader = cmd.ExecuteReader
+                    If reader.HasRows Then
+                        result = True
+                    Else
+                        result = False
+                    End If
+                End Using
+
+            End Using
+        Catch ex As Exception
+            MsgBox(GlobalErrorMessage, MsgBoxStyle.Critical)
+        End Try
+
+        Return result
+    End Function
 End Class

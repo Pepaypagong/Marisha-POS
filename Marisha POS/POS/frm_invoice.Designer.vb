@@ -53,6 +53,17 @@ Partial Class frm_invoice
         Me.ReciptSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lbl_barcode_status = New System.Windows.Forms.Label()
         Me.dgv_item_cart = New System.Windows.Forms.DataGridView()
+        Me.item_no = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.barcode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.item_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.selling_price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.unit = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.amount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.buying_price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.discount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.remove_btn = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lbl_trans_no = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -71,17 +82,6 @@ Partial Class frm_invoice
         Me.cmd_discount = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.item_no = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.barcode = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.item_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.selling_price = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.unit = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.amount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.buying_price = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.discount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.remove_btn = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Panel1.SuspendLayout
         Me.MenuStrip1.SuspendLayout
         CType(Me.dgv_item_cart,System.ComponentModel.ISupportInitialize).BeginInit
@@ -368,6 +368,103 @@ Partial Class frm_invoice
         Me.dgv_item_cart.Size = New System.Drawing.Size(820, 529)
         Me.dgv_item_cart.TabIndex = 84
         '
+        'item_no
+        '
+        Me.item_no.HeaderText = "Item No."
+        Me.item_no.Name = "item_no"
+        Me.item_no.ReadOnly = true
+        Me.item_no.Visible = false
+        Me.item_no.Width = 90
+        '
+        'barcode
+        '
+        Me.barcode.HeaderText = "Barcode"
+        Me.barcode.Name = "barcode"
+        Me.barcode.ReadOnly = true
+        Me.barcode.Visible = false
+        Me.barcode.Width = 120
+        '
+        'item_name
+        '
+        Me.item_name.HeaderText = "Item Name"
+        Me.item_name.Name = "item_name"
+        Me.item_name.ReadOnly = true
+        Me.item_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.item_name.Width = 310
+        '
+        'selling_price
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.selling_price.DefaultCellStyle = DataGridViewCellStyle2
+        Me.selling_price.HeaderText = "Price"
+        Me.selling_price.Name = "selling_price"
+        Me.selling_price.ReadOnly = true
+        Me.selling_price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        '
+        'qty
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.qty.DefaultCellStyle = DataGridViewCellStyle3
+        Me.qty.HeaderText = "Qty."
+        Me.qty.Name = "qty"
+        Me.qty.ReadOnly = true
+        Me.qty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.qty.Width = 60
+        '
+        'unit
+        '
+        Me.unit.HeaderText = "Unit"
+        Me.unit.Name = "unit"
+        Me.unit.ReadOnly = true
+        Me.unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.unit.Width = 50
+        '
+        'amount
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.amount.DefaultCellStyle = DataGridViewCellStyle4
+        Me.amount.HeaderText = "Amount"
+        Me.amount.Name = "amount"
+        Me.amount.ReadOnly = true
+        Me.amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.amount.Width = 110
+        '
+        'buying_price
+        '
+        Me.buying_price.HeaderText = "buying_price"
+        Me.buying_price.Name = "buying_price"
+        Me.buying_price.ReadOnly = true
+        Me.buying_price.Visible = false
+        '
+        'discount
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.discount.DefaultCellStyle = DataGridViewCellStyle5
+        Me.discount.HeaderText = "Discount"
+        Me.discount.Name = "discount"
+        Me.discount.ReadOnly = true
+        Me.discount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        '
+        'category
+        '
+        Me.category.HeaderText = "category"
+        Me.category.Name = "category"
+        Me.category.ReadOnly = true
+        Me.category.Visible = false
+        '
+        'remove_btn
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.remove_btn.DefaultCellStyle = DataGridViewCellStyle6
+        Me.remove_btn.HeaderText = "Remove"
+        Me.remove_btn.Name = "remove_btn"
+        Me.remove_btn.ReadOnly = true
+        Me.remove_btn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.remove_btn.Text = "X"
+        Me.remove_btn.UseColumnTextForButtonValue = true
+        Me.remove_btn.Width = 70
+        '
         'Label7
         '
         Me.Label7.AutoSize = true
@@ -522,103 +619,6 @@ Partial Class frm_invoice
         Me.Label4.Size = New System.Drawing.Size(148, 32)
         Me.Label4.TabIndex = 91
         Me.Label4.Text = "(*Press F1 to Set Focus"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"on the Barcode Textbox)"
-        '
-        'item_no
-        '
-        Me.item_no.HeaderText = "Item No."
-        Me.item_no.Name = "item_no"
-        Me.item_no.ReadOnly = true
-        Me.item_no.Visible = false
-        Me.item_no.Width = 90
-        '
-        'barcode
-        '
-        Me.barcode.HeaderText = "Barcode"
-        Me.barcode.Name = "barcode"
-        Me.barcode.ReadOnly = true
-        Me.barcode.Visible = false
-        Me.barcode.Width = 120
-        '
-        'item_name
-        '
-        Me.item_name.HeaderText = "Item Name"
-        Me.item_name.Name = "item_name"
-        Me.item_name.ReadOnly = true
-        Me.item_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.item_name.Width = 310
-        '
-        'selling_price
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.selling_price.DefaultCellStyle = DataGridViewCellStyle2
-        Me.selling_price.HeaderText = "Price"
-        Me.selling_price.Name = "selling_price"
-        Me.selling_price.ReadOnly = true
-        Me.selling_price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        '
-        'qty
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.qty.DefaultCellStyle = DataGridViewCellStyle3
-        Me.qty.HeaderText = "Qty."
-        Me.qty.Name = "qty"
-        Me.qty.ReadOnly = true
-        Me.qty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.qty.Width = 60
-        '
-        'unit
-        '
-        Me.unit.HeaderText = "Unit"
-        Me.unit.Name = "unit"
-        Me.unit.ReadOnly = true
-        Me.unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.unit.Width = 50
-        '
-        'amount
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.amount.DefaultCellStyle = DataGridViewCellStyle4
-        Me.amount.HeaderText = "Amount"
-        Me.amount.Name = "amount"
-        Me.amount.ReadOnly = true
-        Me.amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.amount.Width = 110
-        '
-        'buying_price
-        '
-        Me.buying_price.HeaderText = "buying_price"
-        Me.buying_price.Name = "buying_price"
-        Me.buying_price.ReadOnly = true
-        Me.buying_price.Visible = false
-        '
-        'discount
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.discount.DefaultCellStyle = DataGridViewCellStyle5
-        Me.discount.HeaderText = "Discount"
-        Me.discount.Name = "discount"
-        Me.discount.ReadOnly = true
-        Me.discount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        '
-        'category
-        '
-        Me.category.HeaderText = "category"
-        Me.category.Name = "category"
-        Me.category.ReadOnly = true
-        Me.category.Visible = false
-        '
-        'remove_btn
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.remove_btn.DefaultCellStyle = DataGridViewCellStyle6
-        Me.remove_btn.HeaderText = "Remove"
-        Me.remove_btn.Name = "remove_btn"
-        Me.remove_btn.ReadOnly = true
-        Me.remove_btn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.remove_btn.Text = "X"
-        Me.remove_btn.UseColumnTextForButtonValue = true
-        Me.remove_btn.Width = 70
         '
         'frm_invoice
         '

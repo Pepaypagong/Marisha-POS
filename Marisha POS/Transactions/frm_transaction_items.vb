@@ -9,6 +9,15 @@
     Public mTransactionTypeItem As String = "cash trans"
     Public mode As String = "view"
 
+    Public m_item_no As Integer
+    Public m_item_name As String = ""
+    Public m_qty As Decimal
+    Public m_barcode As String = ""
+    Public m_selling_price As Decimal
+    Public m_buying_price As Decimal
+    Public m_unit As String = ""
+    Public m_category As String = ""
+
     Private Sub me_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Me.Dispose()
     End Sub
@@ -17,16 +26,15 @@
         dtp_date.CustomFormat = " MMMM dd,  yyyy"
         lbl_title.Text = GetTitle()
         SetControls()
+        SetTotalsControls()
+        SetDiscountGridAndButtons(mTransactionTypeItem)
 
         If mode = "view" Or mode = "delete" Then
             transItemService.GetViewData(mTransactionTypeItem, frm_transactions.selectedTransId)
-            transItemService.GetItems(mTransactionTypeItem, frm_transactions.selectedTransId)
+            transItemService.GetItems(mTransactionTypeItem, frm_transactions.selectedTransId, dgv_items)
         End If
 
-    End Sub
-
-    Private Sub dgv_items_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_items.CellContentClick
-
+        GetItemTotalAmounts()
     End Sub
 
     Private Sub cmd_save_Click(sender As Object, e As EventArgs) Handles cmd_save.Click
@@ -79,6 +87,43 @@
         End If
     End Sub
 
+    Sub GetItemTotalAmounts()
+
+        Dim sub_total As Decimal = 0
+        Dim item_count As Decimal = 0
+        Dim discount As Decimal = 0
+
+        For index As Integer = 0 To dgv_items.RowCount - 1
+            sub_total += Convert.ToDecimal(dgv_items.Rows(index).Cells(3).Value * dgv_items.Rows(index).Cells(5).Value)
+
+            'If dgv_items.Rows(index).Cells(4).Value.ToString = "PCS" Then
+            '    item_count += Convert.ToDecimal(dgv_items.Rows(index).Cells(3).Value)
+            'End If
+
+            discount += Convert.ToDecimal(dgv_items.Rows(index).Cells(6).Value)
+        Next
+
+        Dim grand_total As Decimal = sub_total - discount
+
+        lbl_total_discount.Text = discount.ToString("0.00")
+        lbl_sub_total.Text = sub_total.ToString("0.00")
+        lbl_grand_total.Text = grand_total.ToString("0.00")
+    End Sub
+    Public Sub SetTotalsControls()
+        Select Case mTransactionTypeItem
+
+            Case "new sales return", "sales return", "del sales return",
+                 "new purchase return", "purchase return", "del purchase return",
+                 "new reject", "reject", "del reject"
+
+                lbl_total_discount_label.Visible = False
+                lbl_total_discount.Visible = False
+                lbl_grand_total_label.Visible = False
+                lbl_grand_total.Visible = False
+                lbl_sub_total_label.Text = "Grand Total:"
+        End Select
+    End Sub
+
     Public Sub DisableControls()
         'For Each ctl As Control In Controls
         '    ctl.Enabled = False
@@ -89,8 +134,10 @@
 
         txt_barcode.Enabled = False
 
+        cmd_apply_disc.Visible = False
         cmd_add_item.Visible = False
         cmd_remove_item.Visible = False
+        cmd_change_qty.Visible = False
     End Sub
     Public Sub SetControls()
         If mode = "view" Then
@@ -162,6 +209,7 @@
             cmd_save.Size = New Point(114, 27)
             cmd_add_item.Visible = True
             cmd_remove_item.Visible = True
+            cmd_change_qty.Visible = True
 
             If mTransactionTypeItem = "new sales return" Or
                mTransactionTypeItem = "new reject" Then
@@ -314,5 +362,64 @@
         Return ret_string
 
     End Function
+    Public Sub SetDiscountGridAndButtons(trans_type As String)
+
+        Select Case trans_type
+            Case "cash sales","new cash sales","del cash sales",
+                 "customer sales","new customer sales","del customer sales",
+                 "purchase","new purchase","del purchase"
+                dgv_items.Columns(6).Visible = True
+                cmd_apply_disc.Visible = True
+            Case "sales return","new sales return","del sales return",
+                 "purchase return","new purchase return","del purchase return",
+                 "reject","new reject","del reject"
+                dgv_items.Columns(6).Visible = False
+                cmd_apply_disc.Visible = False
+        End Select
+
+    End Sub
+
+    Private Sub txt_barcode_TextChanged(sender As Object, e As EventArgs) Handles txt_barcode.TextChanged
+        Dim barcodeText = txt_barcode.Text.Replace("'", "''")
+        If txt_barcode.Text = "" Then
+            lbl_barcode_status.Text = "...."
+        End If
+
+        If transItemService.BarcodeFound(barcodeText) Then
+            lbl_barcode_status.Text = " Item Found!"
+            transItemService.PutItemToVariables(barcodeText)
+            'check if exists then find item +1
+            Dim exists As Boolean = False
+            For Each itm As DataGridViewRow In dgv_items.Rows
+                If itm.Cells(0).Value = m_item_no Then
+                    exists = True
+                    itm.Cells(3).Value += 1 'qty col
+                    itm.Cells(7).Value = Format(CDec(itm.Cells(3).Value * itm.Cells(5).Value), "0.00") '+1 instance of price to the total amt
+                End If
+            Next
+
+            If exists = False Then
+                transItemService.add_to_cart(mTransactionTypeItem, m_item_no, m_barcode, m_item_name, m_selling_price, m_qty, m_unit, m_selling_price, m_buying_price,
+                                      0.00, m_category, dgv_items)
+            End If
+
+            GetItemTotalAmounts()
+            txt_barcode.Clear()
+        End If
+
+        lbl_barcode_status.Text = "No Match Found ...."
+        ClearItemVariables()
+    End Sub
+
+    Public Sub ClearItemVariables()
+        m_item_no = vbNull
+        m_barcode = vbNull
+        m_item_name = vbNull
+        m_qty = vbNull
+        m_selling_price = vbNull
+        m_buying_price = vbNull
+        m_unit = vbNull
+        m_category = vbNull
+    End Sub
 
 End Class
