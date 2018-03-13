@@ -46,9 +46,9 @@
     End Sub
 
     Private Sub txt_barcode_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txt_barcode.KeyUp
-        If txt_barcode.Text = "" Then
-            lbl_barcode_status.Text = "...."
-        End If
+        'If txt_barcode.Text = "" Then
+        '    lbl_barcode_status.Text = "...."
+        'End If
         If pos_query.match_found = True Then
             lbl_barcode_status.Text = " Match Found"
             pos_query.match_put_to_txt()
@@ -65,14 +65,18 @@
 
             If exists = False Then
                 pos_query.add_to_cart(m_item_no, m_barcode, m_item_name, m_selling_price, m_qty, m_unit, m_selling_price, m_buying_price,
-                                      0.00,m_category)
+                                      0.00, m_category)
             End If
 
             looptotal()
             txt_barcode.Clear()
+        Else
+            If txt_barcode.Text <> "" Then
+                lbl_barcode_status.Text = "No Match Found ...."
+            End If
         End If
 
-        lbl_barcode_status.Text = "No Match Found ...."
+
         ClearItemVariables()
 
     End Sub

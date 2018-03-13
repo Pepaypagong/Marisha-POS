@@ -32,9 +32,12 @@
         If mode = "view" Or mode = "delete" Then
             transItemService.GetViewData(mTransactionTypeItem, frm_transactions.selectedTransId)
             transItemService.GetItems(mTransactionTypeItem, frm_transactions.selectedTransId, dgv_items)
+        Else 'new
+            lbl_trans_no.Text = SQL.GenerateTransactionNumber(mTransactionTypeItem)
         End If
 
         GetItemTotalAmounts()
+
     End Sub
 
     Private Sub cmd_save_Click(sender As Object, e As EventArgs) Handles cmd_save.Click
@@ -370,6 +373,11 @@
                  "purchase","new purchase","del purchase"
                 dgv_items.Columns(6).Visible = True
                 cmd_apply_disc.Visible = True
+                Select Case trans_type
+                    Case "cash sales","customer sales","purchase","del cash sales",
+                         "del customer sales","del purchase"
+                        cmd_apply_disc.Visible = False
+                End Select
             Case "sales return","new sales return","del sales return",
                  "purchase return","new purchase return","del purchase return",
                  "reject","new reject","del reject"
@@ -381,9 +389,9 @@
 
     Private Sub txt_barcode_TextChanged(sender As Object, e As EventArgs) Handles txt_barcode.TextChanged
         Dim barcodeText = txt_barcode.Text.Replace("'", "''")
-        If txt_barcode.Text = "" Then
-            lbl_barcode_status.Text = "...."
-        End If
+        'If txt_barcode.Text = "" Then
+        '    lbl_barcode_status.Text = "...."
+        'End If
 
         If transItemService.BarcodeFound(barcodeText) Then
             lbl_barcode_status.Text = " Item Found!"
@@ -405,9 +413,12 @@
 
             GetItemTotalAmounts()
             txt_barcode.Clear()
+        Else
+            If txt_barcode.Text <> "" Then
+                lbl_barcode_status.Text = "No Match Found ...."
+            End If    
         End If
-
-        lbl_barcode_status.Text = "No Match Found ...."
+        
         ClearItemVariables()
     End Sub
 

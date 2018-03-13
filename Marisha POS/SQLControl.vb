@@ -131,4 +131,69 @@ Public Class SQLControl
 
         Return result
     End Function
+
+    Public Function GenerateTransactionNumber(trans_type As String) As String
+        Dim retVal As String = ""
+        Dim tableName As String = ""
+        Dim id As Integer
+
+        Select Case trans_type
+            Case "new sales return", "new reject"
+                tableName = "sales_trans_table"
+            Case "new purchase", "new purchase return"
+                tableName = "purchase_trans_table"
+        End Select
+
+        Try
+            Dim str_query As String = "SELECT TOP 1 trans_no FROM " + tableName + " ORDER BY trans_no DESC"
+            ConnDB()
+            SQLCmd = New SqlCommand(str_query, SQLCon)
+
+            Using reader As SqlDataReader = SQLCmd.ExecuteReader
+
+                If reader.Read = True Then
+                    id = reader("trans_no") + 1
+                Else
+                    id = 1
+                End If
+
+                retVal = GeneratePrefixAndId(id, trans_type)
+            End Using
+
+        Catch ex As Exception
+            MsgBox(GlobalErrorMessage, MsgBoxStyle.Critical)
+        Finally
+            SQLCmd.Dispose()
+            SQLCon.Close()
+        End Try
+
+        Return retVal
+
+    End Function
+
+    Public Function GeneratePrefixAndId(Id As Integer, trans_type As String) As String
+        '12 digits including prefix = SR0000000001
+        Dim generatedReturn As String = ""
+        Dim prefix As String = ""
+        Dim idDigitCount As Integer
+
+        Select Case trans_type
+            Case "new sales return"
+                prefix = "SR"
+            Case "new reject"
+                prefix = "RJ"
+            Case "new purchase"
+                prefix = "PU"
+            Case "new purchase return"
+                prefix = "PR"
+        End Select
+        generatedReturn += prefix
+        idDigitCount = Id.ToString().Count()
+        For index = idDigitCount To 9
+            generatedReturn += "0"
+        Next
+        generatedReturn += Id.ToString()
+        Return generatedReturn
+    End Function
+
 End Class
